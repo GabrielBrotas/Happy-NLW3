@@ -1,5 +1,6 @@
-import React from 'react'
 import {FiArrowRight} from 'react-icons/fi'
+import {Link} from 'react-router-dom'
+
 import './styles.css'
 
 import logoImg from '../../assets/images/logo.svg'
@@ -20,9 +21,9 @@ function Landing() {
                     <span>Camaçari</span>
                 </div>
 
-                <a href="" className="enter-app">
+                <Link to="/app" className="enter-app">
                     <FiArrowRight size={26} color="rgba(0, 0, 0, 0.6)" />
-                </a>
+                </Link>
             </div>
         </div>
     )

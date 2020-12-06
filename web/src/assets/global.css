@@ -10,6 +10,5 @@ body {
 }
 
 body, input, button, textarea {
-    font: 600 18px Nunito, sans-serif; /* weight, size, font-family, enquanto nao carregar a font family usar a sans-serif que todos navegador utilizam */
-    
+    font: 600 18px Nunito, sans-serif; /* weight, size, font-family, enquanto nao carregar a font family usar a sans-serif que todos navegador utilizam */   
 }
