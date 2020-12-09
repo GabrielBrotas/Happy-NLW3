@@ -1,13 +1,17 @@
+/* Comando para criar a migration 
+  >yarn typeorm migration:create -n create_orphanages
+*/
 import {MigrationInterface, QueryRunner, Table} from "typeorm";
 
 export class createOrphanages1607297095415 implements MigrationInterface {
 
-  // realizar as alterações no banco de dados
-  // criar tabela, criar campo, deletar campo, atualizar...
+  // O método up vai realizar as alterações no banco de dados
+  // exemplo: criar tabela, criar campo, deletar campo, atualizar...
   public async up(queryRunner: QueryRunner): Promise<void> {
-    // criar uma tabela
+    
+    // o queryRunner é a função que vai possuar os comandos dentro do banco de dados,
     await queryRunner.createTable(new Table({
-      name: 'orphanages',
+      name: 'orphanages', // nome da tabela
       columns: [
         {
           name: 'id',
@@ -56,6 +60,7 @@ export class createOrphanages1607297095415 implements MigrationInterface {
   }
 
   // desfazer o que fez no metodo up
+  // >yarn typeorm migration:revert  <- comando para desfazer essa tabela
   public async down(queryRunner: QueryRunner): Promise<void> {
     // se no metodo up nós criamos uma tabela, no metodo down nos vamos deletar
     await queryRunner.dropTable('orphanages')

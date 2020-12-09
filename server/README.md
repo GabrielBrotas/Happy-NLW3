@@ -50,9 +50,26 @@
 
     atraves do ts-node-dev ele vai buscar a cli.js dentro de onde o typeorm está instalado.
 
-## Criando migrations
+## Criando / Deletando migrations
     >yarn typeorm migration:create -n create_orphanages
 
     -n: nome da migration
 
     Vai criar um arquivo para a gnt (não devemos alterar esse nome) com os metodos up e down
+
+    Para realizar o metodo up vamos utilizar o: 
+    >yarn typeorm migration:run 
+
+    E Para desfazer a tabela vamos usar este comando para desfazer as criações/alteraçoes:
+        >yarn typeorm migration:revert
+
+## tsconfig.json
+    "strictPropertyInitialization": false // Descomentar este comando para poder definir o nome das variaveis dentro de uma classe sem mostrar erros 
+    "experimentalDecorators": true,      // habilitar a API '@'
+    "emitDecoratorMetadata": true,       
+
+## Arquitetura MVC
+
+    M - Model, representa um entidade da aplicação, fazendo a relação com o DB por exemplo (dado, orfanato, usuario, etc)
+    V - View, como as coisas são visualizadas/disponiveis para o frontend
+    C - Controllers, logica das rotas

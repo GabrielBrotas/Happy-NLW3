@@ -1,9 +1,10 @@
+//  Esse modul vai criar a relação do nosse server com uma tabela do db, nesse caso vai ser com a tabela 'orphanages'
 import {Entity, Column, PrimaryGeneratedColumn} from 'typeorm'
 
 // Com o @Entity o typeorm vai entender que a classe criada está associada com a tabela chamada 'orphanages'
 @Entity('orphanages')
 export default class Orphanage {
-  
+
   // Coluna primaria do banco de dados
   @PrimaryGeneratedColumn('increment')
   id: number;
