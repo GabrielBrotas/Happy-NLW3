@@ -62,6 +62,7 @@ export class createOrphanages1607297095415 implements MigrationInterface {
   // desfazer o que fez no metodo up
   // >yarn typeorm migration:revert  <- comando para desfazer essa tabela
   public async down(queryRunner: QueryRunner): Promise<void> {
+    console.log('delete')
     // se no metodo up nós criamos uma tabela, no metodo down nos vamos deletar
     await queryRunner.dropTable('orphanages')
   }
