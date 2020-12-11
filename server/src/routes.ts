@@ -1,6 +1,6 @@
 import {Router} from 'express'
 import multer from 'multer'
-
+import 'express-async-errors' // mostrar errors em funções assincronas
 import uploadConfig from './config/upload'
 import OrphangesController from './controllers/OrphanagesControllers'
 

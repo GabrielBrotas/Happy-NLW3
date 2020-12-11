@@ -4,7 +4,6 @@ import routes from './routes'
 import path from 'path'
 import errorHandler from './errors/handler'
 
-import 'express-async-errors' // mostrar errors em funções assincronas
 import './database/connection'
 
 
