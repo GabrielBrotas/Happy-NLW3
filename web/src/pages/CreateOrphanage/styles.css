@@ -30,7 +30,7 @@
 #page-create-orphanage main .orphanage-details .map-container {
     margin: 40px 0;
 
-    background: #f5f8fa;
+    background-color: #E6F7FB;
     color: #4D6F80;
 
     display: flex;
@@ -43,6 +43,7 @@
 
 #page-create-orphanage main .orphanage-details .map-container .leaflet-container{
     border-radius: 20px;
+    cursor: pointer;
 }
 
 #page-create-orphanage main .orphanage-details .map-container p {
@@ -53,15 +54,12 @@
     border: none;
 }
 
-#page-create-orphanage main .orphanage-details fieldset .upload-images {
+#page-create-orphanage main .orphanage-details fieldset .images-section {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-
-    margin-bottom: 25px;
 }
 
-#page-create-orphanage main .orphanage-details fieldset .upload-images label {
+#page-create-orphanage main .orphanage-details fieldset .images-section label {
     font-family: Nunito;
     font-weight: 600;
 
@@ -70,9 +68,17 @@
     padding-bottom: 10px;
 }
 
-#page-create-orphanage main .orphanage-details fieldset .upload-images button {
-    width: 95px;
+#page-create-orphanage main .orphanage-details fieldset .images-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 16px;
+
+    margin-bottom: 25px;
+}
+
+#page-create-orphanage main .orphanage-details fieldset .images-container .upload-image {
     height: 95px;
+    width: 100%;
     cursor: pointer;
 
     background: #F5F8FA;
@@ -80,7 +86,24 @@
     box-sizing: border-box;
     border-radius: 20px;
 
-    color: #8fa7b3
+    outline: none;
+    color: #8fa7b3;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#page-create-orphanage main .orphanage-details fieldset .images-section img {
+    width: 100%;
+    height: 95px;
+    object-fit: cover;
+
+    border-radius: 20px;
+}
+
+#page-create-orphanage main .orphanage-details fieldset .images-section input[type="file"] {
+    display: none;
 }
 
 #page-create-orphanage main .orphanage-details fieldset .open-on-weekends{

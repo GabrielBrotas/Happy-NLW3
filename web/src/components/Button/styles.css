@@ -14,11 +14,12 @@
     align-items: center;
     justify-content: center;
 
-    transition: background-color 0.2s
+    transition: background-color 0.2s;
+
 }
 
-.button {
-    background: #3EE08F
+.button button {
+    outline: none;
 }
 
 .button svg{

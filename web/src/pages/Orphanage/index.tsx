@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import {useParams, Link} from 'react-router-dom'
+import {useParams} from 'react-router-dom'
 import {MapContainer, TileLayer, Marker} from 'react-leaflet'
 import { FiClock, FiInfo } from "react-icons/fi";
 import { FaWhatsapp } from 'react-icons/fa'
@@ -24,11 +24,15 @@ function OrphanagesMap() {
     const [activeImageIndex, setActiveImageIndex] = useState(0)
 
     useEffect( () => {
-        api.get(`orphanages/${params.id}`)
-            .then( res => {
-                setOrphanage(res.data)
-            })
+        getOrphanages(params.id)
     }, [params.id])
+
+    function getOrphanages(id: string) {
+        api.get(`orphanages/${id}`)
+        .then( res => {
+            setOrphanage(res.data)
+        })
+    }
 
     if(!orphanage) {
         return <p>Loading...</p>

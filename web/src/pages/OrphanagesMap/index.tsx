@@ -28,11 +28,15 @@ function OrphanagesMap() {
     const [orphanages, setOrphanages] = useState<Orphanage[]>([])
 
     useEffect( () => {
+        getOrphanages();
+    }, [])
+
+    function getOrphanages() {
         api.get('/orphanages')
             .then( res => {
                 setOrphanages(res.data)        
             })
-    })
+    }
 
     return (
         <div id="page-map">

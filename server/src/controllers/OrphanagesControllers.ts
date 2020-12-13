@@ -44,7 +44,14 @@ export default {
     const orphanagesRepository = getRepository(Orphanage)
 
     const data = {
-      name, latitude, longitude, about, instructions, opening_hours, open_on_weekends, images
+      name, 
+      latitude, 
+      longitude, 
+      about, 
+      instructions, 
+      opening_hours, 
+      open_on_weekends: open_on_weekends === "true", //converter para boolean 
+      images
     }
 
     // criando um schema/interface que nossos orfanatos deve ter

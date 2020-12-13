@@ -1,12 +1,13 @@
+import { ButtonHTMLAttributes } from 'react'
 import './styles.css'
 
-interface ButtonProps {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     children: any
 }
 
 function Button({children}: ButtonProps) {
     return (
-        <button type="button" className="button">
+        <button className="button">
             {children}
         </button>
     )
