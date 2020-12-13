@@ -125,30 +125,3 @@
     border: 1px solid #a1e9c5;
     color: #37c77f;
 }
-
-#page-orphanage .orphanage-details .orphanage-details-content button {
-    margin: 50px 0;
-    width: 100%;
-    height: 65px;
-
-    background: #37C77F;
-    color: #fff;
-    cursor: pointer;
-
-    border: 0;
-    border-radius: 20px;
-    
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    transition: background-color 0.2s
-}
-
-#page-orphanage .orphanage-details .orphanage-details-content button:hover {
-    background: #3EE08F
-}
-
-#page-orphanage .orphanage-details .orphanage-details-content button svg {
-    margin-right: 15px;
-}

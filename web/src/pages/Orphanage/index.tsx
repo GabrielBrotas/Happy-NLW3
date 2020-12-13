@@ -8,6 +8,7 @@ import mapMarkerImg from '../../assets/images/map-marker.svg'
 
 import './styles.css'
 import Aside from '../../components/Aside';
+import Button from '../../components/Button';
 
 const mapIcon = Leaflet.icon({
     iconUrl: mapMarkerImg,
@@ -92,10 +93,11 @@ function OrphanagesMap() {
                         </div>
                     </div>
 
-                    <button type="button" className="contact-button">
+                    <Button>
                         <FaWhatsapp size={20} color="#fff" />
                         Entrar em contato
-                    </button>
+                    </Button>
+                      
                 </div>
             </div>
         </main>

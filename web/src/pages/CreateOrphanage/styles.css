@@ -1,0 +1,152 @@
+#page-create-orphanage {
+    min-height: 100vh;
+
+    display: flex;
+}
+
+#page-create-orphanage main {
+    width: 700px;
+    margin: 64px auto;
+
+    background: #ffffff;
+    border: 1px solid #d3e2e5;
+    border-radius: 20px;
+}
+
+#page-create-orphanage main .orphanage-details {
+    padding: 60px 60px 0 60px
+}
+
+#page-create-orphanage main .orphanage-details h2 {
+    font-weight: bold;
+    color: #4D6F80;
+}
+
+#page-create-orphanage main .orphanage-details hr {
+    margin: 20px 0;
+    border: .5px solid #D3E2E5;
+}
+
+#page-create-orphanage main .orphanage-details .map-container {
+    margin: 40px 0;
+
+    background: #f5f8fa;
+    color: #4D6F80;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 20px;
+}
+
+#page-create-orphanage main .orphanage-details .map-container .leaflet-container{
+    border-radius: 20px;
+}
+
+#page-create-orphanage main .orphanage-details .map-container p {
+    margin: 20px 0;
+}
+
+#page-create-orphanage main .orphanage-details fieldset{
+    border: none;
+}
+
+#page-create-orphanage main .orphanage-details fieldset .upload-images {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    margin-bottom: 25px;
+}
+
+#page-create-orphanage main .orphanage-details fieldset .upload-images label {
+    font-family: Nunito;
+    font-weight: 600;
+
+    color: #8fa7b3;
+
+    padding-bottom: 10px;
+}
+
+#page-create-orphanage main .orphanage-details fieldset .upload-images button {
+    width: 95px;
+    height: 95px;
+    cursor: pointer;
+
+    background: #F5F8FA;
+    border: 1px dashed #96D2F0;
+    box-sizing: border-box;
+    border-radius: 20px;
+
+    color: #8fa7b3
+}
+
+#page-create-orphanage main .orphanage-details fieldset .open-on-weekends{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #8FA7B2
+}
+
+#page-create-orphanage main .orphanage-details fieldset .switch{
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+#page-create-orphanage main .orphanage-details fieldset .switch input{
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#page-create-orphanage main .orphanage-details fieldset .switch .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+  
+#page-create-orphanage main .orphanage-details fieldset .switch .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+#page-create-orphanage main .orphanage-details fieldset .switch input:checked + .slider {
+    background-color: #2196F3;
+  }
+  
+#page-create-orphanage main .orphanage-details fieldset .switch input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+  
+#page-create-orphanage main .orphanage-details fieldset .switch input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+  
+/* Rounded sliders */
+#page-create-orphanage main .orphanage-details fieldset .switch .slider.round {
+    border-radius: 34px;
+}
+  
+#page-create-orphanage main .orphanage-details fieldset .switch .slider.round:before {
+    border-radius: 50%;
+}
+

@@ -1,0 +1,26 @@
+.button {
+    margin: 50px 0;
+    width: 100%;
+    height: 65px;
+
+    background: #37C77F;
+    color: #fff;
+    cursor: pointer;
+
+    border: 0;
+    border-radius: 20px;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: background-color 0.2s
+}
+
+.button {
+    background: #3EE08F
+}
+
+.button svg{
+    margin-right: 15px;
+}
