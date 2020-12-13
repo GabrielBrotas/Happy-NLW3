@@ -53,7 +53,7 @@ function OrphanagesMap() {
                         className="map-popup"
                     >
                     Leaf let popup
-                    <Link to="">
+                    <Link to="/orphanages/1">
                         <FiArrowRight size={20} color="#fff" />
                     </Link>
                     </Popup>
@@ -62,7 +62,7 @@ function OrphanagesMap() {
 
             </MapContainer>
 
-            <Link to="" className="create-orphanage">
+            <Link to="/orphanages/create" className="create-orphanage">
                 <FiPlus size={32} color="#fff" />
             </Link>
         </div>

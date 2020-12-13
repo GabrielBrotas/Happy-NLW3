@@ -1,12 +1,13 @@
 import Leaflet from 'leaflet'
 import { FaWhatsapp } from 'react-icons/fa'
 import {MapContainer, TileLayer, Marker} from 'react-leaflet'
-import { FiArrowLeft, FiClock, FiInfo } from "react-icons/fi";
+import { FiClock, FiInfo } from "react-icons/fi";
 import { Link, useHistory } from "react-router-dom";
 
 import mapMarkerImg from '../../assets/images/map-marker.svg'
 
 import './styles.css'
+import Aside from '../../components/Aside';
 
 const mapIcon = Leaflet.icon({
     iconUrl: mapMarkerImg,
@@ -16,19 +17,10 @@ const mapIcon = Leaflet.icon({
 })
 
 function OrphanagesMap() {
-    const {goBack} = useHistory()
-
     return (
     <div id="page-orphanage">
-        <aside>
-            <img src={mapMarkerImg} alt="Happy" />
-
-            <footer>
-                <button type="button" onClick={goBack}>
-                    <FiArrowLeft size={24} color="#fff" />
-                </button>
-            </footer>
-        </aside>
+       
+       <Aside />
 
         <main>
             <div className="orphanage-details">
