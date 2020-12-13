@@ -1,21 +1,38 @@
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import Leaflet from 'leaflet'
 import {MapContainer, TileLayer, Marker, Popup} from 'react-leaflet'
-import 'leaflet/dist/leaflet.css'
+import api from '../../services/api'
 
 import { FiPlus, FiArrowRight } from 'react-icons/fi'
 import mapMarkerImg from '../../assets/images/map-marker.svg'
+import mapIcon from '../..//utils/mapIcon'
 
 import './styles.css'
 
-const mapIcon = Leaflet.icon({
-    iconUrl: mapMarkerImg,
-    iconSize: [35, 35],
-    iconAnchor: [15, 30],
-    popupAnchor: [155, 15]
-})
+interface Orphanage {
+    id: number;
+    name: string;
+    latitude: number;
+    longitude: number;
+    about: string;
+    instructions: string;
+    opening_hours: string;
+    open_on_weekends: boolean;
+    images: [{
+        path: string;
+    }]
+}
 
 function OrphanagesMap() {
+    const [orphanages, setOrphanages] = useState([])
+
+    useEffect( () => {
+        api.get('/orphanages')
+            .then( res => {
+                setOrphanages(res.data)        
+            })
+    })
+
     return (
         <div id="page-map">
             <aside>
@@ -42,23 +59,26 @@ function OrphanagesMap() {
             >
                 <TileLayer url={`https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles/256/{z}/{x}/{y}@2x?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`} />
 
+            {orphanages.map( (orphanage: Orphanage) => (
                 <Marker 
-                    position={[-12.7227001, -38.3271215]}
+                    key={orphanage.id}
+                    position={[orphanage.latitude, orphanage.longitude]}
                     icon={mapIcon}
                 >
                     <Popup 
-                        closeButton={false}
-                        minWidth={240}
-                        maxWidth={240}
-                        className="map-popup"
+                      closeButton={false}
+                      minWidth={240}
+                      maxWidth={240}
+                      className="map-popup"
                     >
-                    Leaf let popup
-                    <Link to="/orphanages/1">
-                        <FiArrowRight size={20} color="#fff" />
+                    {orphanage.name}
+                    <Link to={`/orphanages/${orphanage.id}`}>
+                      <FiArrowRight size={20} color="#fff" />
                     </Link>
                     </Popup>
 
-                </Marker>
+              </Marker>      
+            ))}
 
             </MapContainer>
 

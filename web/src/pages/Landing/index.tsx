@@ -2,10 +2,10 @@ import {FiArrowRight} from 'react-icons/fi'
 import {Link} from 'react-router-dom'
 
 import './styles.css'
-
 import logoImg from '../../assets/images/logo.svg'
 
 function Landing() {
+
     return (
         <div id="page-landing">
             <div className="content-wrapper">

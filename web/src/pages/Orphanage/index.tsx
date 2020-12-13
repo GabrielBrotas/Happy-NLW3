@@ -1,21 +1,14 @@
-import Leaflet from 'leaflet'
 import { FaWhatsapp } from 'react-icons/fa'
 import {MapContainer, TileLayer, Marker} from 'react-leaflet'
 import { FiClock, FiInfo } from "react-icons/fi";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-import mapMarkerImg from '../../assets/images/map-marker.svg'
+import mapIcon from '../../utils/mapIcon'
 
 import './styles.css'
 import Aside from '../../components/Aside';
 import Button from '../../components/Button';
 
-const mapIcon = Leaflet.icon({
-    iconUrl: mapMarkerImg,
-    iconSize: [35, 35],
-    iconAnchor: [15, 30],
-    popupAnchor: [155, 15]
-})
 
 function OrphanagesMap() {
     return (
