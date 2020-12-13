@@ -9,7 +9,7 @@ import mapIcon from '../..//utils/mapIcon'
 
 import './styles.css'
 
-interface Orphanage {
+export interface Orphanage {
     id: number;
     name: string;
     latitude: number;
@@ -18,13 +18,14 @@ interface Orphanage {
     instructions: string;
     opening_hours: string;
     open_on_weekends: boolean;
-    images: [{
-        path: string;
-    }]
+    images: Array<{
+        id: string;
+        url: string;
+    }>
 }
 
 function OrphanagesMap() {
-    const [orphanages, setOrphanages] = useState([])
+    const [orphanages, setOrphanages] = useState<Orphanage[]>([])
 
     useEffect( () => {
         api.get('/orphanages')
@@ -59,7 +60,7 @@ function OrphanagesMap() {
             >
                 <TileLayer url={`https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles/256/{z}/{x}/{y}@2x?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`} />
 
-            {orphanages.map( (orphanage: Orphanage) => (
+            {orphanages.map( (orphanage) => (
                 <Marker 
                     key={orphanage.id}
                     position={[orphanage.latitude, orphanage.longitude]}

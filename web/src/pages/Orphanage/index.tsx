@@ -1,16 +1,39 @@
-import { FaWhatsapp } from 'react-icons/fa'
+import { useEffect, useState } from 'react';
+import {useParams, Link} from 'react-router-dom'
 import {MapContainer, TileLayer, Marker} from 'react-leaflet'
 import { FiClock, FiInfo } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import { FaWhatsapp } from 'react-icons/fa'
+import api from '../../services/api';
 
+import Aside from '../../components/Aside';
+import Button from '../../components/Button';
 import mapIcon from '../../utils/mapIcon'
 
 import './styles.css'
-import Aside from '../../components/Aside';
-import Button from '../../components/Button';
 
+import { Orphanage } from '../OrphanagesMap';
+
+interface OrphanageParams {
+    id: string;
+}
 
 function OrphanagesMap() {
+    const params = useParams<OrphanageParams>();
+
+    const [orphanage, setOrphanage] = useState<Orphanage>()
+    const [activeImageIndex, setActiveImageIndex] = useState(0)
+
+    useEffect( () => {
+        api.get(`orphanages/${params.id}`)
+            .then( res => {
+                setOrphanage(res.data)
+            })
+    }, [params.id])
+
+    if(!orphanage) {
+        return <p>Loading...</p>
+    }
+
     return (
     <div id="page-orphanage">
        
@@ -18,36 +41,29 @@ function OrphanagesMap() {
 
         <main>
             <div className="orphanage-details">
-                <img src="https://www.decorfacil.com/wp-content/uploads/2017/03/20171011fachada-casa-simples-pequena-99.jpg" alt="lar" />
+                <img src={orphanage.images[activeImageIndex].url} alt={orphanage.name} />
 
                 <div className="images">
-                    <button className="active" type="button">
-                        <img src="https://www.tubefilter.com/wp-content/uploads/2019/11/dobrik-people.jpg" alt="lar" />
-                    </button>
-                    <button className="active" type="button">
-                        <img src="https://www.decorfacil.com/wp-content/uploads/2017/03/20171011fachada-casa-simples-pequena-99.jpg" alt="lar" />
-                    </button>
-                    <button className="active" type="button">
-                        <img src="https://www.decorfacil.com/wp-content/uploads/2017/03/20171011fachada-casa-simples-pequena-99.jpg" alt="lar" />
-                    </button>
-                    <button className="active" type="button">
-                        <img src="https://www.decorfacil.com/wp-content/uploads/2017/03/20171011fachada-casa-simples-pequena-99.jpg" alt="lar" />
-                    </button>
-                    <button className="active" type="button">
-                        <img src="https://www.decorfacil.com/wp-content/uploads/2017/03/20171011fachada-casa-simples-pequena-99.jpg" alt="lar" />
-                    </button>
-                    <button className="active" type="button">
-                        <img src="https://www.decorfacil.com/wp-content/uploads/2017/03/20171011fachada-casa-simples-pequena-99.jpg" alt="lar" />
-                    </button>
+                    {orphanage.images.map( (image, index) => (
+                        <button 
+                            key={image.id} 
+                            className={activeImageIndex === index ? "active" : ""} 
+                            type="button"
+                            onClick={() => {setActiveImageIndex(index)}}
+                        >
+                            <img src={image.url} alt={image.url} />
+                        </button>
+                    ))}
+
                 </div>
 
                 <div className="orphanage-details-content"> 
-                    <h1>Lar das girls</h1>
-                    <p>Sejas sdoaskd pasodka sopdkaspod kasop d</p>
+                    <h1>{orphanage.name}</h1>
+                    <p>{orphanage.about}</p>
 
                     <div className="map-container">
                         <MapContainer
-                            center={[-12.7227001, -38.3271215]}
+                            center={[orphanage.latitude, orphanage.longitude]}
                             zoom={16}
                             style={{width: '100%', height: 200}}
                             dragging={false}
@@ -58,32 +74,39 @@ function OrphanagesMap() {
                         >
                             <TileLayer url={`https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles/256/{z}/{x}/{y}@2x?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`} />
 
-                            <Marker interactive={false} icon={mapIcon} position={[-12.7227001, -38.3271215]} />
+                            <Marker interactive={false} icon={mapIcon} position={[orphanage.latitude, orphanage.longitude]} />
                         </MapContainer>
 
-                        <footer>
-                            <Link to="">
-                                Ver rotas no Google Maps
-                            </Link>
-                        </footer>
+                        <a href={`https://www.google.com/maps/place/${orphanage.latitude},${orphanage.longitude}`} target="_blank" rel="noopener noreferrer">
+                            Ver rotas no Google Maps
+                        </a>
+       
                     </div>
 
                     <hr />
 
                     <h2>Instruções para visita</h2>
-                    <p>asdaskd opasdko  aasdas</p>
+                    <p>{orphanage.instructions}</p>
 
                     <div className="open-details">
                         <div className="hour">
                             <FiClock size={32} color="#29B6D1"/>
-                            Segunda a sexta <br />
-                            08h as 18h
+                            {orphanage.opening_hours}
                         </div>
-                        <div className="open-on-weekends">
-                            <FiInfo size={32} color="#39cc83" />
-                            Atendemos <br />
-                            fim de semana 
-                        </div>
+                       
+                        {orphanage.open_on_weekends ? (
+                            <div className="open-on-weekends">
+                                <FiInfo size={32} color="#39CC83" />
+                                Atendemos <br />
+                                fim de semana 
+                            </div>
+                        ) : (
+                            <div className="open-on-weekends dont-open">
+                                <FiInfo size={32} color="#FF669D" />
+                                Não Atendemos <br />
+                                fim de semana 
+                            </div>
+                        )}
                     </div>
 
                     <Button>
