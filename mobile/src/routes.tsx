@@ -31,7 +31,7 @@ function StackNavigator() {
                     component={SelectMapPosition} 
                     options={{
                         headerShown: true,
-                        header: () => <Header title="Adicione um orfanato" />
+                        header: () => <Header title="Selecione no mapa" />
                     }}
                 />
                 
@@ -40,7 +40,7 @@ function StackNavigator() {
                     component={OrphanageData}
                     options={{
                         headerShown: true,
-                        header: () => <Header title="Selecione a localização" />
+                        header: () => <Header title="Informe os dados" />
                     }}
                 />
 
@@ -49,7 +49,7 @@ function StackNavigator() {
                   component={Orphanage}
                   options={{
                     headerShown: true,
-                    header: () => <Header title="Selecione a localização" />
+                    header: () => <Header showCancel={false} title="Selecione a localização" />
                   }}
                 />
 
