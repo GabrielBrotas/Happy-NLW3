@@ -49,7 +49,7 @@ function StackNavigator() {
                   component={Orphanage}
                   options={{
                     headerShown: true,
-                    header: () => <Header showCancel={false} title="Selecione a localização" />
+                    header: () => <Header showCancel={false} title="Orfanato" />
                   }}
                 />
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import {StatusBar} from 'react-native'
 import {Nunito_600SemiBold, Nunito_700Bold, Nunito_800ExtraBold, useFonts} from '@expo-google-fonts/nunito'
 
 import Routes from './src/routes'
@@ -16,6 +17,9 @@ export default function App() {
   }
 
   return (
+    <>
     <Routes />
+    <StatusBar barStyle="dark-content" />
+    </>
   );
 }
