@@ -16,7 +16,7 @@ function OrphanageMap() {
     }
 
     function handleNavigateToCreateOrphanage() {
-        navigate('StepOne')
+      navigate('SelectMapPosition')
     }
 
     return (

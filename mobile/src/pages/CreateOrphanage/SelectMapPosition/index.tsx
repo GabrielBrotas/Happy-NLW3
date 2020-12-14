@@ -1,10 +1,12 @@
 import React from 'react';
-import { View } from "react-native";
+import { Text, View } from "react-native";
 
 function SelectMapPosition() {
 
     return (
-        <View></View>
+        <View>
+            <Text>This is the page</Text>
+        </View>
     )
 }
 

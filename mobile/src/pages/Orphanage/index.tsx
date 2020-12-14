@@ -1,10 +1,12 @@
 import React from 'react'
-import { View } from "react-native"
+import { View, Text } from "react-native"
 
 function Orphanage() {
 
     return(
-        <View></View>
+        <View>
+            <Text> This is the orphanage view</Text>
+        </View>
     )
 }
 

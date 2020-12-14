@@ -21,7 +21,6 @@ const styles = StyleSheet.create({
     calloutText: {
       color: '#0089a5',
       fontSize: 14,
-      fontFamily: "Nunito_700Bold"
     },
     footer: {
       position: 'absolute',
@@ -48,7 +47,6 @@ const styles = StyleSheet.create({
     },
     footerText: {
       color: '#8fa7b3',
-      fontFamily: 'Nunito_700bold'
     },
     createOrphanageButton: {
       width: 56,
