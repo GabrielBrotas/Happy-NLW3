@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, Image } from 'react-native';
 import MapView, { PROVIDER_GOOGLE, Marker, Callout } from 'react-native-maps';
-import { useNavigation } from '@react-navigation/native';
+import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import { RectButton } from 'react-native-gesture-handler';
 
 import api from '../../services/api';
@@ -31,11 +31,12 @@ function OrphanageMap() {
 
     const [orphanages, setOrphanages] = useState([])
 
-    useEffect(() => {
+    // useFocusEffect vai ser disparado sempre que o usuario vim para essa tela,
+    useFocusEffect(() => {
         api.get('/orphanages').then( (res) => {
             setOrphanages(res.data)
         })
-    }, [])
+    })
     
     function handleNavigateToOrphanageDetails(id: number) {
         navigate('OrphanageDetails', {id})

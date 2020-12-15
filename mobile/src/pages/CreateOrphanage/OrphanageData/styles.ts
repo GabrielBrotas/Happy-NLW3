@@ -46,6 +46,16 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    uploadedImagesContainer: {
+        flexDirection: 'row',
+    },
+    uploadedImages: {
+        width: 64,
+        height: 64,
+        borderRadius: 28,
+        marginBottom: 32,
+        marginRight: 8
+    },
     openOnWeekendsContent: {
         flexDirection: 'row',
         justifyContent: 'space-between',
@@ -57,12 +67,11 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         height: 56,
-
     },
     nextButtonText: {
         fontSize: 16,
         color: "#fff"
-    }
+    },
 })
 
 export default styles

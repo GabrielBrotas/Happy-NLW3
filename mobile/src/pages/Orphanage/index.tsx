@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
-import { View, Text, Image } from "react-native"
-import { RectButton, ScrollView } from 'react-native-gesture-handler'
+import { View, Text, Image, Linking } from "react-native"
+import { RectButton, ScrollView, TouchableOpacity } from 'react-native-gesture-handler'
 import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps'
 import {useRoute} from '@react-navigation/native'
 import api from '../../services/api'
@@ -29,6 +29,10 @@ function OrphanageDetails() {
 
     if(!orphanage) {
         return <Text>Loading...</Text>
+    }
+
+    function handleOpenGoogleMapRoutes() {
+        Linking.openURL(`https://www.google.com/maps/place/${orphanage?.latitude},${orphanage?.longitude}`)
     }
     return(
 
@@ -72,9 +76,9 @@ function OrphanageDetails() {
                         </Marker>
                     </MapView>
 
-                    <View style={styles.routesContainer}>
+                    <TouchableOpacity style={styles.routesContainer} onPress={handleOpenGoogleMapRoutes}>
                         <Text style={styles.routesText}>Ver rotas no google maps</Text>
-                    </View>
+                    </TouchableOpacity>
                 </View>
 
                 <View style={styles.separator} />
