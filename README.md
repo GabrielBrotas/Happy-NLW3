@@ -2,7 +2,7 @@
 
 ## Projeto
   <img src="https://github.com/GabrielBrotas/Happy-NLW3/blob/main/images/happy.png" width="700px" height="400px" />
-  Aplicativo desenvolvido para conectar as pessoas com as casas de acolhimento, informando a localização, instruções de visita e fotos.
+  Aplicativo desenvolvido para conectar as pessoas e as casas de acolhimento, informando a localização, instruções de visita e fotos.
   
 ## Tecnologias
   > Node.js <br />
