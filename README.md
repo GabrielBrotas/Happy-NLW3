@@ -13,6 +13,6 @@
   > TypeScript <br />
 
 # Layouts
-  <a href="https://github.com/GabrielBrotas/Happy-NLW3/tree/main/web">Web</a>
-  <a href="https://github.com/GabrielBrotas/Happy-NLW3/tree/main/mobile">Mobile</a>
-  <a href="https://github.com/GabrielBrotas/Happy-NLW3/tree/main/server">Server</a>
+  <a href="https://github.com/GabrielBrotas/Happy-NLW3/tree/main/web">Web</a> <br />
+  <a href="https://github.com/GabrielBrotas/Happy-NLW3/tree/main/mobile">Mobile</a> <br />
+  <a href="https://github.com/GabrielBrotas/Happy-NLW3/tree/main/server">Server</a> <br />
