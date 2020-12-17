@@ -1,5 +1,5 @@
 import {FiPower, FiMapPin, FiAlertCircle} from 'react-icons/fi'
-import { useHistory } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import mapMarkerImg from '../../assets/images/map-marker.svg'
 
 import './styles.css'
@@ -12,13 +12,13 @@ function Aside() {
         <img src={mapMarkerImg} alt="Happy" />
 
         <main className="aside-admin-main-content">
-            <button>
-                <FiMapPin size={24} color="#fff" />
-            </button>
+            <Link to="/dashboard/orphanages-registered" className="active-icon">
+                <FiMapPin size={24} color="#0089A5" />
+            </Link>
 
-            <button>
+            <Link to="/dashboard/orphanages-pending">
                 <FiAlertCircle size={24} color="#fff" />
-            </button>
+            </Link>
         </main>
 
         <footer>
