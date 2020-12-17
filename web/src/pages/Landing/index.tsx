@@ -17,15 +17,14 @@ function Landing() {
                     </div>
                 </header>
 
-
                 <main>
                     <h1>Leve felicidade para o mundo</h1>
                     <p>Visite orfanatos e mude o dia de muitas crianças</p>
                 </main>
 
-                <button className="button-restricted-access">
+                <Link to="/login" className="button-restricted-access">
                     Acesso Restrito
-                </button>
+                </Link>
                 
                 <Link to="/app" className="enter-app">
                     <FiArrowRight size={26} color="rgba(0, 0, 0, 0.6)" />

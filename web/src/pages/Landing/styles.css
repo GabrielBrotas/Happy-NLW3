@@ -51,7 +51,10 @@
 
 #page-landing .content-wrapper .button-restricted-access {
     position: absolute;
-
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
     top: 0;
     right: 0;
 
@@ -68,6 +71,7 @@
     font-weight: 800;
     font-size: 20px;
     line-height: 30px;
+    text-decoration: none;
 
     transition: background-color 0.2s;
 }
