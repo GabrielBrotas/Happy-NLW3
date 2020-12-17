@@ -2,9 +2,8 @@ import {FiArrowLeft} from 'react-icons/fi'
 import { Link } from 'react-router-dom';
 
 import mapMarker from '../../assets/images/map-marker.svg';
-import './styles.css'
 
-function Login() {
+function ForgetPassword() {
 
     return (
         <div id="page-content">
@@ -22,29 +21,21 @@ function Login() {
 
             <main className="login-content">
                 <fieldset>
-                    <h2>Fazer Login</h2>
+                    <h2>Esqueci a senha</h2>
+
+                    <p className="login-content-description">Sua redefinição de senha será enviada para o e-mail cadastrado</p>
 
                     <label>E-mail</label>
                     <input type="text" />
 
-                    <label>Senha</label>
-                    <input type="password" />
-
-                    <div className="login-options">
-                        <div className="input-check-box">
-                            <input type="checkbox" />
-                            <p>Lembrar-me</p>
-                        </div>
-                        <Link to="/forget-password">Esqueci minha senha</Link>
-                    </div>
-
                     <button className="confirm-button">
-                        <Link to="/">
-                            Entrar
+                        <Link to="/reset-password">
+                        Entrar
                         </Link>
+                        
                     </button>
 
-                    <Link to="/" className="goBack-button">
+                    <Link to="/login" className="goBack-button">
                         <FiArrowLeft size={24} color="#15C3D6" />
                     </Link>
                 </fieldset>
@@ -53,4 +44,4 @@ function Login() {
     )
 }
 
-export default Login
+export default ForgetPassword

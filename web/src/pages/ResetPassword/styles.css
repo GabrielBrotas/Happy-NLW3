@@ -1,0 +1,11 @@
+#page-content .login-content fieldset .login-content-description {
+    font-family: Nunito;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 28px;
+
+    color: #5C8599;
+
+    margin-bottom: 30px;
+}

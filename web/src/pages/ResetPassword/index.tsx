@@ -1,10 +1,11 @@
+import React from 'react';
+import {Link} from 'react-router-dom';
 import {FiArrowLeft} from 'react-icons/fi'
-import { Link } from 'react-router-dom';
 
 import mapMarker from '../../assets/images/map-marker.svg';
 import './styles.css'
 
-function Login() {
+function ResetPassowrd() {
 
     return (
         <div id="page-content">
@@ -22,29 +23,23 @@ function Login() {
 
             <main className="login-content">
                 <fieldset>
-                    <h2>Fazer Login</h2>
+                    <h2>Redefinição de senha</h2>
 
-                    <label>E-mail</label>
-                    <input type="text" />
+                    <p className="login-content-description">Escolha uma nova senha para você acessar o dashboard do Happy</p>
 
-                    <label>Senha</label>
+                    <label>Nova senha</label>
                     <input type="password" />
 
-                    <div className="login-options">
-                        <div className="input-check-box">
-                            <input type="checkbox" />
-                            <p>Lembrar-me</p>
-                        </div>
-                        <Link to="/forget-password">Esqueci minha senha</Link>
-                    </div>
+                    <label>Repetir senha</label>
+                    <input type="password" />
 
                     <button className="confirm-button">
-                        <Link to="/">
+                        <Link to="/login">
                             Entrar
                         </Link>
                     </button>
 
-                    <Link to="/" className="goBack-button">
+                    <Link to="/login" className="goBack-button">
                         <FiArrowLeft size={24} color="#15C3D6" />
                     </Link>
                 </fieldset>
@@ -53,4 +48,4 @@ function Login() {
     )
 }
 
-export default Login
+export default ResetPassowrd
