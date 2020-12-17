@@ -2,8 +2,8 @@
 
 ## Project
   <img src="https://github.com/GabrielBrotas/Happy-NLW3/blob/main/images/happy.png" width="700px" height="400px" />
-  Application developed to connect people and orphanages. 
-  The user can check the orhanage available in his region, check the visit instructions, photos of the place, contact and also create the orhanages.
+  Application developed to connect people and orphanages. <br /> 
+  The user can check the orhanage available in his region, check the visit instructions, photos of the place, contact and also create the orhanages, but just the admin can approve the creation.
   
 ## Technologies
   > Node.js <br />
