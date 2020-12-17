@@ -84,7 +84,6 @@ function OrphanagesMap() {
                         <a href={`https://www.google.com/maps/place/${orphanage.latitude},${orphanage.longitude}`} target="_blank" rel="noopener noreferrer">
                             Ver rotas no Google Maps
                         </a>
-       
                     </div>
 
                     <hr />
