@@ -25,19 +25,19 @@
   > yarn install <br />
   >#Run Application <br />
   > yarn start <br />
-  
+   <br />
   #### mobile
-  >#go to the mobile folder;
-  > cd mobile
-  >#install the dependencies;
-  > yarn install
-  >#Run Application
-  > yarn start
-  
+  >#go to the mobile folder; <br />
+  > cd mobile <br />
+  >#install the dependencies; <br />
+  > yarn install <br />
+  >#Run Application <br />
+  > yarn start <br />
+   <br />
   #### server
-  >#go to the server folder;
-  > cd server
-  >#install the dependencies;
-  > yarn install
-  >#Run Application
-  > yarn dev
+  >#go to the server folder; <br />
+  > cd server <br />
+  >#install the dependencies; <br />
+  > yarn install <br />
+  >#Run Application <br />
+  > yarn dev <br />
