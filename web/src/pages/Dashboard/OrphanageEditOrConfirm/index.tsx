@@ -12,7 +12,7 @@ import mapIcon from '../../../utils/mapIcon'
 
 import './styles.css'
 
-function EditOrphanage() {
+function OrphanageEditOrConfirm() {
 
     const history = useHistory();
 
@@ -185,4 +185,4 @@ function EditOrphanage() {
     )
 }
 
-export default EditOrphanage
+export default OrphanageEditOrConfirm
