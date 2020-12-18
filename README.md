@@ -19,25 +19,25 @@
 
 ## 💻 How to Run;
   #### web
-  go to the web folder;
-  > cd web
-  install the dependencies;
-  > yarn install
-  Run Application
-  > yarn start
+  >#go to the web folder; <br />
+  > cd web <br />
+  >#install the dependencies; <br />
+  > yarn install <br />
+  >#Run Application <br />
+  > yarn start <br />
   
   #### mobile
-  go to the mobile folder;
+  >#go to the mobile folder;
   > cd mobile
-  install the dependencies;
+  >#install the dependencies;
   > yarn install
-  Run Application
+  >#Run Application
   > yarn start
   
   #### server
-  go to the server folder;
+  >#go to the server folder;
   > cd server
-  install the dependencies;
+  >#install the dependencies;
   > yarn install
-  Run Application
+  >#Run Application
   > yarn dev
