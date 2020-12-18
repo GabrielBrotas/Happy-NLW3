@@ -5,6 +5,7 @@ import { FiEdit, FiTrash2 } from 'react-icons/fi'
 import AsideAdmin from '../../../components/AsideAdmin'
 import mapIcon from '../../../utils/mapIcon'
 import './styles.css'
+import { Link } from 'react-router-dom'
 
 function OrphanagesRegistered() {
 
@@ -43,9 +44,9 @@ function OrphanagesRegistered() {
                                 <h2>Orfanato da Gleba E</h2>
 
                                 <div className="orphanage-options">
-                                    <button>
+                                    <Link to="/dashboard/edit-orphanage">
                                         <FiEdit size={16} color="#15C3D6" />
-                                    </button>
+                                    </Link>
                                     <button>
                                         <FiTrash2 size={16} color="#15C3D6" />
                                     </button>

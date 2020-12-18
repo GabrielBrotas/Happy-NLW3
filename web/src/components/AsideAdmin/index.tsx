@@ -11,7 +11,7 @@ function Aside() {
     <aside className="aside-container">
         <img src={mapMarkerImg} alt="Happy" />
 
-        <main className="aside-admin-main-content">
+        <div className="aside-admin-main-content">
             <Link to="/dashboard/orphanages-registered" className="active-icon">
                 <FiMapPin size={24} color="#0089A5" />
             </Link>
@@ -19,7 +19,7 @@ function Aside() {
             <Link to="/dashboard/orphanages-pending">
                 <FiAlertCircle size={24} color="#fff" />
             </Link>
-        </main>
+        </div>
 
         <footer>
             <button type="button" onClick={goBack}>

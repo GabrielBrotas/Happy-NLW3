@@ -1,9 +1,8 @@
 #dashboard-container {
     display: flex;
-
 }
 
-#dashboard-container main{
+#dashboard-container main {
     flex: 1;
 }
 
@@ -88,7 +87,8 @@
     color: #4D6F80;
 }
 
-#dashboard-container main .dashboard-main-container .orphanages-wrapper .orphanage-container .orphanage-footer button {
+#dashboard-container main .dashboard-main-container .orphanages-wrapper .orphanage-container .orphanage-footer button,
+#dashboard-container main .dashboard-main-container .orphanages-wrapper .orphanage-container .orphanage-footer a {
     margin: 0 5px;
     background: #EBF2F5;
     
@@ -99,4 +99,8 @@
     border: none;
 
     cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
