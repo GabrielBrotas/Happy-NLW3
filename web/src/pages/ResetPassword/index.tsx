@@ -1,5 +1,5 @@
-import React from 'react';
-import {Link} from 'react-router-dom';
+import React, { useState } from 'react';
+import {Link, useHistory} from 'react-router-dom';
 import {FiArrowLeft} from 'react-icons/fi'
 
 import mapMarker from '../../assets/images/map-marker.svg';
@@ -7,6 +7,14 @@ import './styles.css'
 
 function ResetPassowrd() {
 
+    const history = useHistory();
+
+    const [password, setPassword] = useState();
+    const [confirmPassword, setConfirmPassword] = useState('');
+
+    function handleGoToLoginPage() {
+        history.push('/login')
+    }
     return (
         <div id="page-content">
             <aside className="aside-app-content">
@@ -33,10 +41,12 @@ function ResetPassowrd() {
                     <label>Repetir senha</label>
                     <input type="password" />
 
-                    <button className="confirm-button">
-                        <Link to="/login">
-                            Entrar
-                        </Link>
+                    <button 
+                    className={(password === "" || confirmPassword === "") ? "disabled-button" : "confirm-button"} 
+                    onClick={handleGoToLoginPage} 
+                    disabled={password === "" || confirmPassword === ""}
+                    >
+                        Entrar
                     </button>
 
                     <Link to="/login" className="goBack-button">

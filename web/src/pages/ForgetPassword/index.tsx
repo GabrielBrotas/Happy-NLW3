@@ -1,9 +1,18 @@
+import { useState } from 'react';
 import {FiArrowLeft} from 'react-icons/fi'
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import mapMarker from '../../assets/images/map-marker.svg';
 
 function ForgetPassword() {
+
+    const history = useHistory();
+
+    const [email, setEmail] = useState('')
+    
+    function handleGoToResetPassword() {
+        history.push('/reset-password')
+    }
 
     return (
         <div id="page-content">
@@ -26,13 +35,14 @@ function ForgetPassword() {
                     <p className="login-content-description">Sua redefinição de senha será enviada para o e-mail cadastrado</p>
 
                     <label>E-mail</label>
-                    <input type="text" />
+                    <input type="text" value={email} onChange={e => setEmail(e.target.value)} />
 
-                    <button className="confirm-button">
-                        <Link to="/reset-password">
+                    <button 
+                    className={ email === "" ? "disabled-button" : "confirm-button"}
+                    onClick={handleGoToResetPassword}
+                    disabled={email === ""}
+                    >
                         Entrar
-                        </Link>
-                        
                     </button>
 
                     <Link to="/login" className="goBack-button">

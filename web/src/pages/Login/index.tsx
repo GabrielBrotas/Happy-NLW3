@@ -1,11 +1,22 @@
+import { useState } from 'react';
 import {FiArrowLeft} from 'react-icons/fi'
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import mapMarker from '../../assets/images/map-marker.svg';
 import './styles.css'
 
 function Login() {
 
+    const history = useHistory();
+
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+
+    function handleLogIn() {
+        history.push('/dashboard/orphanages-registered')
+    }
+
+    console.log(email)
     return (
         <div id="page-content">
             <aside className="aside-app-content">
@@ -25,10 +36,18 @@ function Login() {
                     <h2>Fazer Login</h2>
 
                     <label>E-mail</label>
-                    <input type="text" />
+                    <input
+                        type="text"
+                        value={email}
+                        onChange={e => setEmail(e.target.value)}
+                    />
 
                     <label>Senha</label>
-                    <input type="password" />
+                    <input 
+                        type="password"
+                        value={password}
+                        onChange={e => setPassword( e.target.value)}    
+                    />
 
                     <div className="login-options">
                         <div className="input-check-box">
@@ -38,10 +57,12 @@ function Login() {
                         <Link to="/forget-password">Esqueci minha senha</Link>
                     </div>
 
-                    <button className="confirm-button">
-                        <Link to="/">
-                            Entrar
-                        </Link>
+                    <button 
+                    className={(email === "" || password === "") ? "disabled-button" : "confirm-button"} 
+                    onClick={handleLogIn} 
+                    disabled={email === "" || password === ""}
+                    >
+                        Entrar
                     </button>
 
                     <Link to="/" className="goBack-button">

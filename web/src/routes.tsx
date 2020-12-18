@@ -10,6 +10,7 @@ import ResetPassword from './pages/ResetPassword'
 import OrphanagesRegistered from './pages/Dashboard/OrphanagesRegistered'
 import OrphanagesPending from './pages/Dashboard/OrphanagesPending'
 import OrphanageEditOrConfirm from './pages/Dashboard/OrphanageEditOrConfirm'
+import OrphanageDelete from './pages/Dashboard/OrphanageDelete'
 
 function Routes() {
     return (
@@ -26,6 +27,7 @@ function Routes() {
             <Route path="/dashboard/orphanages-registered" component={OrphanagesRegistered} />
             <Route path="/dashboard/orphanages-pending" component={OrphanagesPending} />
             <Route path="/dashboard/edit-orphanage" component={OrphanageEditOrConfirm} />
+            <Route path="/dashboard/delete-orphanage" component={OrphanageDelete} />
         </Switch>
     </BrowserRouter>         
     )
