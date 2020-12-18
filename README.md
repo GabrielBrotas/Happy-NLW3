@@ -12,13 +12,13 @@
   > Expo; <br />
   > TypeScript; <br />
 
-# Layouts
+# Folders
   <a href="https://github.com/GabrielBrotas/Happy-NLW3/tree/main/web">Web</a> <br />
   <a href="https://github.com/GabrielBrotas/Happy-NLW3/tree/main/mobile">Mobile</a> <br />
   <a href="https://github.com/GabrielBrotas/Happy-NLW3/tree/main/server">Server</a> <br />
 
 ## 💻 How to Run;
-  #### web
+  #### Web
   >#go to the web folder; <br />
   > cd web <br />
   >#install the dependencies; <br />
@@ -26,7 +26,7 @@
   >#Run Application <br />
   > yarn start <br />
    
-  #### mobile
+  #### Mobile
   >#go to the mobile folder; <br />
   > cd mobile <br />
   >#install the dependencies; <br />
@@ -34,7 +34,7 @@
   >#Run Application <br />
   > yarn start <br />
    
-  #### server
+  #### Server
   >#go to the server folder; <br />
   > cd server <br />
   >#install the dependencies; <br />
