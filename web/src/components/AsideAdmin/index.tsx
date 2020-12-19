@@ -6,7 +6,7 @@ import mapMarkerImg from '../../assets/images/map-marker.svg'
 import './styles.css'
 
 function Aside() {
-    const {goBack} = useHistory()
+    const {goBack, push} = useHistory();
     const {path} = useRouteMatch();
 
     const [registeredOrphanagesPage, setRegisteredOrphanagesPage] = useState(false)
@@ -24,9 +24,13 @@ function Aside() {
         }
     }, [path])
 
+    function handleGoToAppPage() {
+        push('/app')
+    }
+
     return(
     <aside className="aside-container">
-        <img src={mapMarkerImg} alt="Happy" />
+        <img src={mapMarkerImg} alt="Happy" onClick={handleGoToAppPage} style={{cursor: 'pointer'}}/>
 
         <div className="aside-admin-main-content">
             <Link to="/dashboard/orphanages-registered" className={ registeredOrphanagesPage ? "active-icon" : ""}>
