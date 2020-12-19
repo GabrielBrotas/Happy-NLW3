@@ -11,7 +11,8 @@ const upload = multer(uploadConfig)
 
 routes.get('/orphanages', OrphangesController.index)
 routes.get('/orphanages/:id', OrphangesController.show)
-routes.post('/users', UsersController.create)
+routes.post('/register', UsersController.create)
+routes.post('/login', UsersController.login)
 
 // upload.array(<nome do campo que vai receber as imagens>) = receber varias imagens ao mesmo tempo
 routes.post('/orphanages', upload.array('images'), OrphangesController.create);
