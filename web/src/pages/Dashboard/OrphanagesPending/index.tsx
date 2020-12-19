@@ -1,11 +1,18 @@
 import React from 'react'
 import { FiArrowRight } from 'react-icons/fi'
 import { MapContainer, Marker, TileLayer } from 'react-leaflet'
+import { useHistory } from 'react-router-dom'
 
 import AsideAdmin from '../../../components/AsideAdmin'
 import mapIcon from '../../../utils/mapIcon'
 
-function OrphanagesPending() {
+function OrphanagesPending() { 
+
+    const {push} = useHistory();
+
+    function handleGoToAcceptOrDeclineOrphanagePage() {
+        push('/dashboard/orphanage/pending/1')
+    }
 
     return (
         <div id="dashboard-container">
@@ -41,7 +48,7 @@ function OrphanagesPending() {
                             <div className="orphanage-footer">
                                 <h2>Orfanato da Gleba E</h2>
 
-                                <button>
+                                <button onClick={handleGoToAcceptOrDeclineOrphanagePage}>
                                     <FiArrowRight size={16} color="#15C3D6" />
                                 </button>
                                 

@@ -5,9 +5,19 @@ import { FiEdit, FiTrash2 } from 'react-icons/fi'
 import AsideAdmin from '../../../components/AsideAdmin'
 import mapIcon from '../../../utils/mapIcon'
 import './styles.css'
-import { Link } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 
 function OrphanagesRegistered() {
+
+    const {push} = useHistory()
+
+    function handleEditOrphanage() {
+        push('/dashboard/orphanage/edit/1')
+    }
+
+    function handleDeleteOrphanage() {
+        push('/dashboard/orphanage/delete/1')
+    }
 
     return (
         <div id="dashboard-container">
@@ -44,10 +54,10 @@ function OrphanagesRegistered() {
                                 <h2>Orfanato da Gleba E</h2>
 
                                 <div className="orphanage-options">
-                                    <Link to="/dashboard/edit-orphanage">
+                                    <button onClick={handleEditOrphanage}>
                                         <FiEdit size={16} color="#15C3D6" />
-                                    </Link>
-                                    <button>
+                                    </button>
+                                    <button onClick={handleDeleteOrphanage}>
                                         <FiTrash2 size={16} color="#15C3D6" />
                                     </button>
                                 </div>

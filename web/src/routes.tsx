@@ -26,8 +26,8 @@ function Routes() {
             <Route path="/reset-password" component={ResetPassword} />
             <Route path="/dashboard/orphanages-registered" component={OrphanagesRegistered} />
             <Route path="/dashboard/orphanages-pending" component={OrphanagesPending} />
-            <Route path="/dashboard/edit-orphanage" component={OrphanageEditOrConfirm} />
-            <Route path="/dashboard/delete-orphanage" component={OrphanageDelete} />
+            <Route path="/dashboard/orphanage/:action/:id" component={OrphanageEditOrConfirm} />
+            <Route path="/dashboard/orphanage/delete/:id" component={OrphanageDelete} />
         </Switch>
     </BrowserRouter>         
     )

@@ -1,9 +1,9 @@
-import { ChangeEvent, FormEvent, useCallback, useState } from 'react'
+import { ChangeEvent, FormEvent, useCallback, useEffect, useState } from 'react'
 import { MapContainer, Marker, TileLayer    , useMapEvent} from 'react-leaflet'
-import { useHistory } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 import api from '../../../services/api'
 
-import { FiPlus } from 'react-icons/fi'
+import { FiPlus, FiXCircle, FiCheck } from 'react-icons/fi'
 import AsideAdmin from '../../../components/AsideAdmin'
 import Button from '../../../components/Button'
 import Input from '../../../components/Input'
@@ -12,10 +12,16 @@ import mapIcon from '../../../utils/mapIcon'
 
 import './styles.css'
 
+interface ParamsProps {
+    action: string;
+    id: string;
+}
+
 function OrphanageEditOrConfirm() {
 
     const history = useHistory();
-
+    const params = useParams<ParamsProps>();
+    
     const [name, setName] = useState('')
     const [about, setAbout] = useState('')
     const [instructions, setInstructions] = useState('')
@@ -28,7 +34,7 @@ function OrphanageEditOrConfirm() {
     const [images, setImages] = useState<File[]>([])
     const [previewImages, setPreviewImages] = useState<string[]>([]);
 
-    async function handleCreateNewOrphanage(e: FormEvent) {
+    async function handleEditOrAcceptOrphanage(e: FormEvent) {
         e.preventDefault()
         const data = new FormData();
 
@@ -81,13 +87,19 @@ function OrphanageEditOrConfirm() {
         return null
     }
 
+    useEffect( () => {
+        if(params.action !== "edit" && params.action !== "pending") {
+            history.push('/dashboard/orphanages-registered')
+        } 
+    }, [])
+
     return(
         <div id="page-create-orphanage">
             <AsideAdmin />
 
             <main>
 
-                <form onSubmit={handleCreateNewOrphanage} className="orphanage-details">
+                <form onSubmit={handleEditOrAcceptOrphanage} className="orphanage-details">
                     <h2>Dados</h2>
 
                     <hr />
@@ -170,13 +182,27 @@ function OrphanageEditOrConfirm() {
                             <p>Atende fim de semana?</p>
                             <div className="switch" onClick={() => toggleOpenOnWeekends()} >
                                 <input type="checkbox" checked={openOnWeekends} readOnly/>
-                                <span className="slider round"></span>
+                                <span className="slider round" />
                             </div>
                         </div>
                         
-                        <Button type="submit" >
-                            Confirmar
-                        </Button>
+                        {params.action === "edit" ? (
+                            <Button type="submit" >
+                                Confirmar
+                            </Button>
+                        ) : (
+                            <div className="orphanage-pending-buttons">
+                                <button className="button-decline-orphanage" type="submit">
+                                    <FiXCircle size={20} color="#fff" style={{marginRight: "10px"}} />
+                                    Recusar
+                                </button>
+                                <button className="button-accept-orphanage" type="submit">
+                                    <FiCheck size={20} color="#fff" style={{marginRight: "10px"}} />
+                                    Aceitar
+                                </button>
+                            </div>
+                        )}
+                        
                     </fieldset>
 
                 </form>

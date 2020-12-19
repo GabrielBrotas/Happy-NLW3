@@ -1,11 +1,14 @@
 import {FiPower, FiMapPin, FiAlertCircle} from 'react-icons/fi'
-import { Link, useHistory } from 'react-router-dom'
+import { Link, useHistory, useParams } from 'react-router-dom'
 import mapMarkerImg from '../../assets/images/map-marker.svg'
 
 import './styles.css'
 
 function Aside() {
     const {goBack} = useHistory()
+    const params = useParams()
+
+    console.log(params)
 
     return(
     <aside className="aside-container">
