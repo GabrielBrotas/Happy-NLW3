@@ -11,7 +11,7 @@ function OrphanagesPending() {
     const {push} = useHistory();
 
     function handleGoToAcceptOrDeclineOrphanagePage() {
-        push('/dashboard/orphanage/pending/1')
+        push('/dashboard/orphanages-pending/pending/1')
     }
 
     return (

@@ -1,26 +1,40 @@
+import { useEffect, useState } from 'react'
 import {FiPower, FiMapPin, FiAlertCircle} from 'react-icons/fi'
-import { Link, useHistory, useParams } from 'react-router-dom'
+import { Link, useHistory, useRouteMatch } from 'react-router-dom'
 import mapMarkerImg from '../../assets/images/map-marker.svg'
 
 import './styles.css'
 
 function Aside() {
     const {goBack} = useHistory()
-    const params = useParams()
+    const {path} = useRouteMatch();
 
-    console.log(params)
+    const [registeredOrphanagesPage, setRegisteredOrphanagesPage] = useState(false)
+    const [pendingOrphanagesPage, setPendingOrphanagesPage] = useState(false)
+
+    useEffect( () => {
+        if(path.split('/')[2] === "orphanages-registered") {
+            setRegisteredOrphanagesPage(true)
+            setPendingOrphanagesPage(false)
+        }
+        
+        if(path.split('/')[2] === "orphanages-pending") {
+            setPendingOrphanagesPage(true)
+            setRegisteredOrphanagesPage(false)
+        }
+    }, [path])
 
     return(
     <aside className="aside-container">
         <img src={mapMarkerImg} alt="Happy" />
 
         <div className="aside-admin-main-content">
-            <Link to="/dashboard/orphanages-registered" className="active-icon">
-                <FiMapPin size={24} color="#0089A5" />
+            <Link to="/dashboard/orphanages-registered" className={ registeredOrphanagesPage ? "active-icon" : ""}>
+                <FiMapPin size={24} color={ registeredOrphanagesPage? "#0089A5" : "#fff"} />
             </Link>
 
-            <Link to="/dashboard/orphanages-pending">
-                <FiAlertCircle size={24} color="#fff" />
+            <Link to="/dashboard/orphanages-pending" className={ pendingOrphanagesPage ? "active-icon" : ""}>
+                <FiAlertCircle size={24} color={  pendingOrphanagesPage ? "#0089A5" : "#fff"} />
             </Link>
         </div>
 

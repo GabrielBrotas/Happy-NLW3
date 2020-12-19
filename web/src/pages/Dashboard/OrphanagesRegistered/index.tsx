@@ -12,11 +12,11 @@ function OrphanagesRegistered() {
     const {push} = useHistory()
 
     function handleEditOrphanage() {
-        push('/dashboard/orphanage/edit/1')
+        push('/dashboard/orphanages-registered/edit/1')
     }
 
     function handleDeleteOrphanage() {
-        push('/dashboard/orphanage/delete/1')
+        push('/dashboard/orphanages-registered/delete/1')
     }
 
     return (

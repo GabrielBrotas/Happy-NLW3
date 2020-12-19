@@ -24,10 +24,11 @@ function Routes() {
             <Route path="/login" component={Login} />
             <Route path="/forget-password" component={ForgetPassword} />
             <Route path="/reset-password" component={ResetPassword} />
-            <Route path="/dashboard/orphanages-registered" component={OrphanagesRegistered} />
-            <Route path="/dashboard/orphanages-pending" component={OrphanagesPending} />
-            <Route path="/dashboard/orphanage/:action/:id" component={OrphanageEditOrConfirm} />
-            <Route path="/dashboard/orphanage/delete/:id" component={OrphanageDelete} />
+            <Route path="/dashboard/orphanages-registered" exact component={OrphanagesRegistered} />
+            <Route path="/dashboard/orphanages-pending" exact component={OrphanagesPending} />
+            <Route path="/dashboard/orphanages-registered/:action/:id" component={OrphanageEditOrConfirm} />
+            <Route path="/dashboard/orphanages-pending/:action/:id" component={OrphanageEditOrConfirm} />
+            <Route path="/dashboard/orphanages-registered/delete/:id" component={OrphanageDelete} />
         </Switch>
     </BrowserRouter>         
     )
