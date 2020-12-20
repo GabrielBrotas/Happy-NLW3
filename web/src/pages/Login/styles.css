@@ -99,7 +99,7 @@
     justify-content: space-between;
     align-items: center;
 
-    margin-top: 20px;
+    margin: 20px 0;
     width: 100%;
 }
 
@@ -126,6 +126,12 @@
     font-size: 16px;
     line-height: 22px;
     text-decoration: none;
+}
+
+#page-content .login-content fieldset .error {
+    color: red;
+    margin: 10px 0;
+    font-size: smaller;
 }
 
 #page-content .login-content fieldset .confirm-button,

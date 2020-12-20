@@ -37,11 +37,11 @@ export default {
                         token: user.generateToken()
                     })
                 } else {
-                    return res.status(400).send({error: "invalid password"})
+                    return res.status(400).send("invalid password")
                 }
             })
         } else {
-            return res.status(400).send({error: "User not found"})
+            return res.status(400).send("User not found")
         }
     },
 

@@ -1,19 +1,21 @@
 import { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {loginUser} from '../../redux/actions/userActions'
+import { stateProps } from '../../redux/store';
 
 import {FiArrowLeft} from 'react-icons/fi'
 import mapMarker from '../../assets/images/map-marker.svg';
 import './styles.css'
-
 
 function Login() {
 
     const {push} = useHistory();
     const dispatch = useDispatch()
 
+    const {error} = useSelector((state: stateProps) => state.user)
+    
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
@@ -61,6 +63,8 @@ function Login() {
                         </div>
                         <Link to="/forget-password">Esqueci minha senha</Link>
                     </div>
+
+                    {error !== '' && <span className="error">* {error}</span>}
 
                     <button 
                     className={(email === "" || password === "") ? "disabled-button" : "confirm-button"} 

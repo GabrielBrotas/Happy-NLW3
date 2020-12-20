@@ -15,6 +15,7 @@ export interface stateProps {
             name: string,
         },
         authenticated: boolean,
+        error: string
     }
 }
 

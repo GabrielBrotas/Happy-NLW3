@@ -19,7 +19,7 @@ import OrphanageDelete from './pages/Dashboard/OrphanageDelete'
 function Routes() {
 
     const {authenticated} = useSelector( (state: stateProps) => state.user)
-    console.log(authenticated)
+
     return (
     <BrowserRouter>
         <Switch>

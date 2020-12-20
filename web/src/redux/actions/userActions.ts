@@ -1,5 +1,5 @@
 import api from '../../services/api'
-import { SET_UNAUTHENTICATED, SET_USER } from '../types'
+import { SET_ERROR, SET_UNAUTHENTICATED, SET_USER, CLEAR_ERROR } from '../types'
 
 interface userDataProps {
     email: string;
@@ -12,10 +12,11 @@ export const loginUser = (userData: userDataProps, push: Function) => (dispatch:
     .then( res => {
         authorizationHeader(res.data.token)
         dispatch({type: SET_USER, payload: res.data.user})
+        dispatch({type: CLEAR_ERROR})
         push('/dashboard/orphanages-registered')
     })
     .catch( err => {
-        console.log(err)
+        dispatch({type: SET_ERROR, payload: err.response.data})
     })
 
 }

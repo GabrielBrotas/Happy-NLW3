@@ -1,8 +1,9 @@
-import { SET_UNAUTHENTICATED, SET_USER } from "../types";
+import { CLEAR_ERROR, SET_ERROR, SET_UNAUTHENTICATED, SET_USER } from "../types";
 
 const initialState = {
     authenticated: false,
-    credentials: {}
+    credentials: {},
+    error: ''
 }
 
 interface ActionProps {
@@ -17,6 +18,10 @@ export default function userReducer(state = initialState, action: ActionProps) {
             return {...state, authenticated: true, credentials: action.payload};
         case SET_UNAUTHENTICATED:
             return {...state, authenticated: false, credentials: {}};
+        case SET_ERROR:
+            return {...state, error: action.payload};
+        case CLEAR_ERROR:
+            return {...state, error: 'cd .cd cd'};
         default:
             return state
     }

@@ -1,17 +1,17 @@
 import { useState } from 'react';
 import {FiArrowLeft} from 'react-icons/fi'
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import mapMarker from '../../assets/images/map-marker.svg';
+import api from '../../services/api';
 
 function ForgetPassword() {
 
-    const history = useHistory();
-
-    const [email, setEmail] = useState('')
+    const [email, setEmail] = useState('');
     
-    function handleGoToResetPassword() {
-        history.push('/reset-password')
+    function handleSendEmailToResetPassowrd() {
+        api.post('/forget-password', {email})
+        alert("Check your email to reset password") 
     }
 
     return (
@@ -39,7 +39,7 @@ function ForgetPassword() {
 
                     <button 
                     className={ email === "" ? "disabled-button" : "confirm-button"}
-                    onClick={handleGoToResetPassword}
+                    onClick={handleSendEmailToResetPassowrd}
                     disabled={email === ""}
                     >
                         Entrar
