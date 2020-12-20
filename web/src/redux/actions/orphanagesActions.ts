@@ -1,4 +1,3 @@
-import { FormEvent } from "react";
 import api from "../../services/api"
 import { GET_ORPHANAGE, GET_ORPHANAGES } from "../types";
 

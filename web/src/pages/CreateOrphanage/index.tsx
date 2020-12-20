@@ -1,7 +1,6 @@
 import { ChangeEvent, FormEvent, useCallback, useState } from 'react'
 import { MapContainer, Marker, TileLayer    , useMapEvent} from 'react-leaflet'
 import { useHistory } from 'react-router-dom'
-import api from '../../services/api'
 
 import { FiPlus } from 'react-icons/fi'
 import Aside from '../../components/Aside'

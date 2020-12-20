@@ -1,7 +1,8 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { useHistory } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { stateProps } from '../../../redux/store'
+import { getOrphanages } from '../../../redux/actions/orphanagesActions'
 import { MapContainer, TileLayer, Marker } from 'react-leaflet'
 
 import AsideAdmin from '../../../components/AsideAdmin'
@@ -10,18 +11,23 @@ import { FiEdit, FiTrash2 } from 'react-icons/fi'
 
 import './styles.css'
 
+
 function OrphanagesRegistered() {
-
     const {push} = useHistory();
+    const dispatch = useDispatch();
 
-    const user = useSelector( (state: stateProps) => state.user )
+    const {orphanages} = useSelector( (state: stateProps) => state.orphanages )
     
-    function handleEditOrphanage() {
-        push('/dashboard/orphanages-registered/edit/1')
+    useEffect( () => {
+        dispatch(getOrphanages(true))
+    }, [dispatch])
+
+    function handleEditOrphanage(id: number) {
+        push(`/dashboard/orphanages-registered/edit/${id}`)
     }
 
-    function handleDeleteOrphanage() {
-        push('/dashboard/orphanages-registered/delete/1')
+    function handleDeleteOrphanage(id: number) {
+        push(`/dashboard/orphanages-registered/delete/${id}`)
     }
 
     return (
@@ -33,15 +39,16 @@ function OrphanagesRegistered() {
                     <header>
                         <h1>Orfanatos Cadastrados</h1>
 
-                        <span>2 orfanatos</span>
+                        <span>{orphanages.length} Orfanatos</span>
                     </header>
 
                     <hr />
 
                     <div className="orphanages-wrapper">
-                        <div className="orphanage-container">
+                        {orphanages.map( orphanage => (
+                            <div key={orphanage.id} className="orphanage-container">
                             <MapContainer
-                                center={[-12.7177843, -38.3248504]}
+                                center={[orphanage.latitude, orphanage.longitude]}
                                 zoom={16}
                                 style={{width: '100%', height: 200}}
                                 dragging={false}
@@ -52,22 +59,23 @@ function OrphanagesRegistered() {
                             >
                                 <TileLayer url={`https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles/256/{z}/{x}/{y}@2x?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`} />
 
-                                <Marker interactive={false} icon={mapIcon} position={[-12.7177843, -38.3248504]} />
+                                <Marker interactive={false} icon={mapIcon} position={[orphanage.latitude, orphanage.longitude]} />
                             </MapContainer>
 
                             <div className="orphanage-footer">
-                                <h2>Orfanato da Gleba E</h2>
+                                <h2>{orphanage.name}</h2>
 
                                 <div className="orphanage-options">
-                                    <button onClick={handleEditOrphanage}>
+                                    <button onClick={() => handleEditOrphanage(orphanage.id)}>
                                         <FiEdit size={16} color="#15C3D6" />
                                     </button>
-                                    <button onClick={handleDeleteOrphanage}>
+                                    <button onClick={() => handleDeleteOrphanage(orphanage.id)}>
                                         <FiTrash2 size={16} color="#15C3D6" />
                                     </button>
                                 </div>
                             </div>
                         </div>
+                        ))}
                     </div>
                 </div>
             </main>
