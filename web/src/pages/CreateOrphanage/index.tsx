@@ -11,10 +11,13 @@ import Textarea from '../../components/Textarea'
 import mapIcon from '../../utils/mapIcon'
 
 import './styles.css'
+import { useDispatch } from 'react-redux'
+import { createOrphanage } from '../../redux/actions/orphanagesActions'
 
 function CreateOrphanage() {
 
-    const history = useHistory();
+    const {push} = useHistory();
+    const dispatch = useDispatch();
 
     const [name, setName] = useState('')
     const [about, setAbout] = useState('')
@@ -43,11 +46,9 @@ function CreateOrphanage() {
         images.forEach( image => {
             data.append('images', image)
         })
-
-        await api.post('/orphanages', data)
-
-        alert("Cadastro realizado com sucesso")
-        history.push('/')
+        
+        dispatch(createOrphanage(data, push))
+    
     }
 
     function handleSelectImages(event: ChangeEvent<HTMLInputElement>) {
