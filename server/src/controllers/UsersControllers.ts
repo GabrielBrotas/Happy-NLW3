@@ -117,7 +117,7 @@ export default {
             subject: 'reset password',
             html: `
             <h2>Esqueceu sua senha?</h2>
-            <p>Não tem problema, utilize este token: ${token}</p>
+            <p>Não tem problema, <a href="http://localhost:3000/reset-password/${token}">clique aqui para alterar sua senha</a></p>
             `
         }, (err) => {
             if(err) {
