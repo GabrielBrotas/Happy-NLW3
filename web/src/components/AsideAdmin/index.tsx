@@ -1,13 +1,16 @@
 import { useEffect, useState } from 'react'
 import {FiPower, FiMapPin, FiAlertCircle} from 'react-icons/fi'
+import { useDispatch } from 'react-redux'
+import {logoutUser} from '../../redux/actions/userActions'
 import { Link, useHistory, useRouteMatch } from 'react-router-dom'
 import mapMarkerImg from '../../assets/images/map-marker.svg'
 
 import './styles.css'
 
 function Aside() {
-    const {goBack, push} = useHistory();
+    const {push} = useHistory();
     const {path} = useRouteMatch();
+    const dispatch = useDispatch();
 
     const [registeredOrphanagesPage, setRegisteredOrphanagesPage] = useState(false)
     const [pendingOrphanagesPage, setPendingOrphanagesPage] = useState(false)
@@ -28,6 +31,10 @@ function Aside() {
         push('/app')
     }
 
+    function handleLogoutUser() {
+        dispatch(logoutUser())
+    }
+
     return(
     <aside className="aside-container">
         <img src={mapMarkerImg} alt="Happy" onClick={handleGoToAppPage} style={{cursor: 'pointer'}}/>
@@ -43,7 +50,7 @@ function Aside() {
         </div>
 
         <footer>
-            <button type="button" onClick={goBack}>
+            <button type="button" onClick={handleLogoutUser}>
                 <FiPower size={24} color="#fff" />
             </button>
         </footer>

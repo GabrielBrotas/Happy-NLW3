@@ -1,4 +1,8 @@
 import {BrowserRouter, Switch, Route} from 'react-router-dom'
+import { stateProps } from './redux/store'
+import { useSelector } from 'react-redux'
+import AuthRoute from './utils/AuthRoute'
+import NotAuthRoute from './utils/NotAuthRoute'
 
 import Landing from './pages/Landing'
 import OrphanagesMap from './pages/OrphanagesMap'
@@ -13,22 +17,26 @@ import OrphanageEditOrConfirm from './pages/Dashboard/OrphanageEditOrConfirm'
 import OrphanageDelete from './pages/Dashboard/OrphanageDelete'
 
 function Routes() {
+
+    const {authenticated} = useSelector( (state: stateProps) => state.user)
+    console.log(authenticated)
     return (
     <BrowserRouter>
         <Switch>
             <Route path="/" exact component={Landing} />
             <Route path="/app" component={OrphanagesMap} />
-            
             <Route path="/orphanages/create" component={CreateOrphanage} />
             <Route path="/orphanages/:id" component={Orphanage} />
-            <Route path="/login" component={Login} />
-            <Route path="/forget-password" component={ForgetPassword} />
-            <Route path="/reset-password" component={ResetPassword} />
-            <Route path="/dashboard/orphanages-registered" exact component={OrphanagesRegistered} />
-            <Route path="/dashboard/orphanages-pending" exact component={OrphanagesPending} />
-            <Route path="/dashboard/orphanages-registered/:action/:id" component={OrphanageEditOrConfirm} />
-            <Route path="/dashboard/orphanages-pending/:action/:id" component={OrphanageEditOrConfirm} />
-            <Route path="/dashboard/orphanages-registered/delete/:id" component={OrphanageDelete} />
+            
+            <NotAuthRoute path="/login" component={Login} />
+            <NotAuthRoute path="/forget-password" component={ForgetPassword} />
+            <NotAuthRoute path="/reset-password" component={ResetPassword} />
+            
+            <AuthRoute path="/dashboard/orphanages-registered" exact component={OrphanagesRegistered} />
+            <AuthRoute path="/dashboard/orphanages-pending" exact component={OrphanagesPending} />
+            <AuthRoute path="/dashboard/orphanages-registered/:action/:id" component={OrphanageEditOrConfirm} />
+            <AuthRoute path="/dashboard/orphanages-pending/:action/:id" component={OrphanageEditOrConfirm} />
+            <AuthRoute path="/dashboard/orphanages-registered/delete/:id" component={OrphanageDelete} />
         </Switch>
     </BrowserRouter>         
     )

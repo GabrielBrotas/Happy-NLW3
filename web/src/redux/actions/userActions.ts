@@ -1,5 +1,5 @@
 import api from '../../services/api'
-import { SET_USER } from '../types'
+import { SET_UNAUTHENTICATED, SET_USER } from '../types'
 
 interface userDataProps {
     email: string;
@@ -18,6 +18,12 @@ export const loginUser = (userData: userDataProps, push: Function) => (dispatch:
         console.log(err)
     })
 
+}
+
+export const logoutUser = () => (dispatch: Function) => {
+    localStorage.removeItem("IdToken");
+    delete api.defaults.headers.common["Authorization"];
+    dispatch({type: SET_UNAUTHENTICATED});
 }
 
 export const getUserData = (userId: number) => (dispatch: Function) => {

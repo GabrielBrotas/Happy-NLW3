@@ -1,3 +1,5 @@
+import { useSelector } from 'react-redux'
+import { stateProps } from '../../redux/store'
 import logoImg from '../../assets/images/logo.svg'
 import {FiArrowRight} from 'react-icons/fi'
 import {Link} from 'react-router-dom'
@@ -6,7 +8,7 @@ import './styles.css'
 
 function Landing() {
 
-    
+    const {authenticated} = useSelector((state: stateProps) => state.user)
 
     return (
         <div id="page-landing">
@@ -24,9 +26,16 @@ function Landing() {
                     <p>Visite orfanatos e mude o dia de muitas crianças</p>
                 </main>
 
-                <Link to="/login" className="button-restricted-access">
+                {authenticated ? (
+                    <Link to="/dashboard/orphanages-registered" className="button-restricted-access">
+                    Dashboard
+                    </Link>
+                ) : (
+                    <Link to="/login" className="button-restricted-access">
                     Acesso Restrito
-                </Link>
+                    </Link>
+                )}
+                
                 
                 <Link to="/app" className="enter-app">
                     <FiArrowRight size={26} color="rgba(0, 0, 0, 0.6)" />

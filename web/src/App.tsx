@@ -31,7 +31,6 @@ function App() {
         api.defaults.headers.common['Authorization'] = token
         dispatch(getUserData(decodedToken.id))
       }
-      
     }
     
   }, [token, dispatch])

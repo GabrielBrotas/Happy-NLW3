@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import { stateProps } from '../../redux/store'
 import {MapContainer, TileLayer, Marker, Popup} from 'react-leaflet'
 import api from '../../services/api'
 
@@ -8,6 +10,7 @@ import mapMarkerImg from '../../assets/images/map-marker.svg'
 import mapIcon from '../..//utils/mapIcon'
 
 import './styles.css'
+
 
 export interface Orphanage {
     id: number;
@@ -25,6 +28,9 @@ export interface Orphanage {
 }
 
 function OrphanagesMap() {
+
+    const {authenticated} = useSelector((state: stateProps) => state.user)
+
     const [orphanages, setOrphanages] = useState<Orphanage[]>([])
 
     useEffect( () => {
@@ -90,6 +96,12 @@ function OrphanagesMap() {
             <Link to="/orphanages/create" className="create-orphanage">
                 <FiPlus size={32} color="#fff" />
             </Link>
+
+            {authenticated &&
+                <Link to="/dashboard/orphanages-registered" className="dashboard">
+                    Dashboard
+                </Link>
+            }
         </div>
     )
 }

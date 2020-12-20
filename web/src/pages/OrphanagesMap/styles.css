@@ -43,14 +43,13 @@
     z-index: 5;
 }
 
-#page-map .create-orphanage {
+#page-map .create-orphanage,
+#page-map .dashboard {
     position: absolute;
     right: 40px;
-    bottom: 40px;
 
     z-index: 10;
-
-    width: 64px;
+    
     height: 64px;
     background: #15c3d6;
     border-radius: 20px;
@@ -62,7 +61,21 @@
     transition: background-color 0.2s
 }
 
-#page-map .create-orphanage:hover {
+#page-map .create-orphanage {
+    width: 64px;
+    bottom: 40px;
+}
+
+#page-map .dashboard {
+    width: auto;
+    padding: 15px;
+    top: 40px;
+    text-decoration: none;
+    color: #fff;
+}
+
+#page-map .create-orphanage:hover,
+#page-map .dashboard:hover {
     background: #17d6eb;
 }
 
