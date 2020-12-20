@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { stateProps } from '../../redux/store'
@@ -14,6 +14,8 @@ import './styles.css'
 function OrphanagesMap() {
 
     const dispatch = useDispatch();
+    const [latitude, setLatitude] = useState<number | null>()
+    const [longitude, setLongitude] = useState<number | null>()
 
     const {authenticated} = useSelector((state: stateProps) => state.user)
     const {orphanages} = useSelector((state: stateProps) => state.orphanages)
@@ -22,6 +24,17 @@ function OrphanagesMap() {
         dispatch(getOrphanages(true))
     }, [])
 
+    useEffect( () => {
+        navigator.geolocation.getCurrentPosition( pos => {
+            setLatitude(pos.coords.latitude)
+            setLongitude(pos.coords.longitude)
+        })
+    }, [])
+
+    if(!latitude || !longitude) {
+        return <p>loading...</p>
+    }
+    
     return (
         <div id="page-map">
             <aside>
@@ -41,7 +54,7 @@ function OrphanagesMap() {
             </aside>
 
             <MapContainer 
-                center={[-12.7227001, -38.3271215]} 
+                center={[latitude, longitude]} 
                 zoom={15} 
                 scrollWheelZoom={false}
                 style={{width: '100%', height: '100%'}}
