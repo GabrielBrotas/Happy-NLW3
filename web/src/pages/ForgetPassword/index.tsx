@@ -1,17 +1,18 @@
 import { useState } from 'react';
 import {FiArrowLeft} from 'react-icons/fi'
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import mapMarker from '../../assets/images/map-marker.svg';
 import api from '../../services/api';
 
 function ForgetPassword() {
-
+    const {push} = useHistory();
     const [email, setEmail] = useState('');
     
     function handleSendEmailToResetPassowrd() {
         api.post('/forget-password', {email})
         alert("Check your email to reset password") 
+        push('/login')
     }
 
     return (

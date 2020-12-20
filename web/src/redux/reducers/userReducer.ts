@@ -21,7 +21,7 @@ export default function userReducer(state = initialState, action: ActionProps) {
         case SET_ERROR:
             return {...state, error: action.payload};
         case CLEAR_ERROR:
-            return {...state, error: 'cd .cd cd'};
+            return {...state, error: ''};
         default:
             return state
     }

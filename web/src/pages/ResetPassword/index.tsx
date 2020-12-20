@@ -1,19 +1,34 @@
 import React, { useState } from 'react';
-import {Link, useHistory} from 'react-router-dom';
-import {FiArrowLeft} from 'react-icons/fi'
+import {Link, useHistory, useParams, useLocation} from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import {resetPassword} from '../../redux/actions/userActions'
+import { stateProps } from '../../redux/store';
 
+import {FiArrowLeft} from 'react-icons/fi'
 import mapMarker from '../../assets/images/map-marker.svg';
 import './styles.css'
 
+interface paramsProps {
+    id: string;
+}
+
 function ResetPassowrd() {
 
-    const history = useHistory();
+    const dispatch = useDispatch();
+    const {push} = useHistory();
+    const {id} = useParams<paramsProps>();
+    const url = useLocation();
+
+    const {error} = useSelector((state: stateProps) => state.user)
 
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
 
-    function handleGoToLoginPage() {
-        history.push('/login')
+    function handleResestPassword() {
+        const token = url.search.split('=')[1]
+        const data = {id, password, confirmPassword, token}        
+
+        dispatch(resetPassword(data, push))
     }
     return (
         <div id="page-content">
@@ -49,9 +64,11 @@ function ResetPassowrd() {
                         onChange={e => setConfirmPassword(e.target.value)}
                     />
 
+                    {error !== '' && <span className="error">* {error}</span>}
+
                     <button 
                     className={(password === "" || confirmPassword === "") ? "disabled-button" : "confirm-button"} 
-                    onClick={handleGoToLoginPage} 
+                    onClick={handleResestPassword} 
                     disabled={password === "" || confirmPassword === ""}
                     >
                         Entrar

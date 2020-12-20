@@ -30,7 +30,7 @@ function Routes() {
             
             <NotAuthRoute path="/login" component={Login} />
             <NotAuthRoute path="/forget-password" component={ForgetPassword} />
-            <NotAuthRoute path="/reset-password" component={ResetPassword} />
+            <NotAuthRoute path="/reset-password/:id" component={ResetPassword} />
             
             <AuthRoute path="/dashboard/orphanages-registered" exact component={OrphanagesRegistered} />
             <AuthRoute path="/dashboard/orphanages-pending" exact component={OrphanagesPending} />

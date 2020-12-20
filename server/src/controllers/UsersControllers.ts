@@ -134,7 +134,7 @@ export default {
             subject: 'reset password',
             html: `
             <h2>Esqueceu sua senha?</h2>
-            <p>Não tem problema, <a href="http://localhost:3000/reset-password/${token}">clique aqui para alterar sua senha</a></p>
+            <p>Não tem problema, <a href="http://localhost:3000/reset-password/${user.id}?token=${token}">clique aqui para alterar sua senha</a></p>
             `
         }, (err) => {
             if(err) {
@@ -146,12 +146,12 @@ export default {
     },
 
     async resetPassword(req: Request, res: Response) {
-        const {email, password, confirmPassword, token} = req.body
+        const {id, password, confirmPassword, token} = req.body
 
-        const data = {email, password, confirmPassword, token}
+        const data = {id, password, confirmPassword, token}
 
         const schema = Yup.object().shape({
-            email: Yup.string().required(),
+            id: Yup.string().required(),
             password: Yup.string().required(),
             confirmPassword: Yup.string().required(),
             token: Yup.string().required()
@@ -162,7 +162,11 @@ export default {
         })
 
         const usersRepository = getRepository(User)
-        const user = await usersRepository.findOne({email})
+        const user = await usersRepository.findOne({id})
+
+        if(password !== confirmPassword) {
+            return res.status(400).send("Passwords does not match")
+        }
 
         const salt = bcrypt.genSaltSync(10)
         const hash = bcrypt.hashSync(password, salt)
