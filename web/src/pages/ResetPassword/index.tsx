@@ -9,7 +9,7 @@ function ResetPassowrd() {
 
     const history = useHistory();
 
-    const [password, setPassword] = useState();
+    const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
 
     function handleGoToLoginPage() {
@@ -36,10 +36,18 @@ function ResetPassowrd() {
                     <p className="login-content-description">Escolha uma nova senha para você acessar o dashboard do Happy</p>
 
                     <label>Nova senha</label>
-                    <input type="password" />
+                    <input 
+                        type="password" 
+                        value={password} 
+                        onChange={e => setPassword(e.target.value)} 
+                    />
 
                     <label>Repetir senha</label>
-                    <input type="password" />
+                    <input 
+                        type="password"
+                        value={confirmPassword}
+                        onChange={e => setConfirmPassword(e.target.value)}
+                    />
 
                     <button 
                     className={(password === "" || confirmPassword === "") ? "disabled-button" : "confirm-button"} 

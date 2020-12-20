@@ -1,22 +1,27 @@
 import { useState } from 'react';
-import {FiArrowLeft} from 'react-icons/fi'
 import { Link, useHistory } from 'react-router-dom';
 
+import { useDispatch } from 'react-redux';
+import {loginUser} from '../../redux/actions/userActions'
+
+import {FiArrowLeft} from 'react-icons/fi'
 import mapMarker from '../../assets/images/map-marker.svg';
 import './styles.css'
 
+
 function Login() {
 
-    const history = useHistory();
+    const {push} = useHistory();
+    const dispatch = useDispatch()
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
     function handleLogIn() {
-        history.push('/dashboard/orphanages-registered')
+        const userData = {email, password}
+        dispatch(loginUser(userData, push))
     }
 
-    console.log(email)
     return (
         <div id="page-content">
             <aside className="aside-app-content">

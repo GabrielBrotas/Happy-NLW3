@@ -14,6 +14,7 @@ routes.get('/orphanages/:accepted', OrphangesController.index)
 routes.get('/orphanages/:id', OrphangesController.show)
 routes.post('/orphanages/accept-response/:id', OrphangesController.acceptOrphanageResponse)
 
+routes.get('/user/:id', UsersController.getUserData)
 routes.post('/register', UsersController.create)
 routes.post('/login', UsersController.login)
 routes.post('/forget-password', UsersController.forgetPassword)

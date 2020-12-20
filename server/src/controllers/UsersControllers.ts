@@ -92,6 +92,23 @@ export default {
         
     },
 
+    async getUserData(req: Request, res: Response) {
+        const {id} = req.params
+
+        const usersRepository = getRepository(User)
+        const user = await usersRepository.findOne({id: parseInt(id)})
+
+        if(!user) {
+            return res.status(404).send({error: 'user not found'})
+        } else {
+            return res.status(200).send({
+                name: user.name,
+                email: user.email,
+                id: user.id,
+            })
+        }
+    },
+
     async forgetPassword(req: Request, res: Response) {
         const {email} = req.body
 

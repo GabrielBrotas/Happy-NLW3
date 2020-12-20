@@ -91,7 +91,7 @@ function OrphanageEditOrConfirm() {
         if(params.action !== "edit" && params.action !== "pending") {
             history.push('/dashboard/orphanages-registered')
         } 
-    }, [])
+    }, [params, history])
 
     return(
         <div id="page-create-orphanage">

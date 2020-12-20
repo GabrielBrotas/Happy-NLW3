@@ -1,16 +1,21 @@
 import React from 'react'
+import { useHistory } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import { stateProps } from '../../../redux/store'
 import { MapContainer, TileLayer, Marker } from 'react-leaflet'
-import { FiEdit, FiTrash2 } from 'react-icons/fi'
 
 import AsideAdmin from '../../../components/AsideAdmin'
 import mapIcon from '../../../utils/mapIcon'
+import { FiEdit, FiTrash2 } from 'react-icons/fi'
+
 import './styles.css'
-import { useHistory } from 'react-router-dom'
 
 function OrphanagesRegistered() {
 
-    const {push} = useHistory()
+    const {push} = useHistory();
 
+    const user = useSelector( (state: stateProps) => state.user )
+    
     function handleEditOrphanage() {
         push('/dashboard/orphanages-registered/edit/1')
     }
