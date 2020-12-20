@@ -7,10 +7,13 @@ import OrphanageView from '../views/orphanages_view'
 export default {
 
   async index(request: Request, response: Response) {
+    const {accepted} = request.params
+
       const orphanagesRepository = getRepository(Orphanage)
 
       // pegar todos orfanatos sem parametros no find para pegar todos
       const orphanages = await orphanagesRepository.find({
+        where: {accepted: accepted === "true"},
         relations: ['images'] // nome da coluna relacionada que tem as imagens
       });
 
