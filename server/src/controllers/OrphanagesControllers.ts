@@ -51,7 +51,8 @@ export default {
       instructions, 
       opening_hours, 
       open_on_weekends: open_on_weekends === "true", //converter para boolean 
-      images
+      images,
+      accepted: false
     }
 
     // criando um schema/interface que nossos orfanatos deve ter
@@ -67,7 +68,8 @@ export default {
         Yup.object().shape({
           path: Yup.string().required(),
       })
-      )
+      ),
+      accepted: Yup.boolean().required()
     })
 
     // validação
@@ -81,5 +83,26 @@ export default {
     await orphanagesRepository.save(orphanage);
   
     return response.status(200).json( orphanage)
+  },
+
+  async acceptOrphanageResponse(req: Request, res: Response) {
+    const {id} = req.params
+    const {adminResponse} = req.body
+    
+    const orphanagesRepository = getRepository(Orphanage)
+
+    const orphanage = await orphanagesRepository.findOne({id: parseInt(id)})
+
+    if(!orphanage) { return res.status(404).send("orphanage not found") }
+
+    if(adminResponse) {
+      orphanage.accepted = true
+      await orphanagesRepository.save(orphanage)
+      return res.status(200).send("orphanage saved")
+    } else {
+      await orphanagesRepository.delete({id: parseInt(id)})
+      return res.status(200).send("orphanage removed")
+    }
+    
   }
 }

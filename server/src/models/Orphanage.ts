@@ -32,6 +32,9 @@ export default class Orphanage {
   @Column()
   open_on_weekends: boolean;
 
+  @Column()
+  accepted: boolean;
+
   // * Relacionamento
   // como não é um campo que existe no banco de dados não vamos colocar o @Column nele
   /*
