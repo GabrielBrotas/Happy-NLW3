@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import {useDispatch} from 'react-redux'
-import { getUserData } from './redux/actions/userActions'
+import { getUserData } from './redux/actions/usersActions'
 import jwtDecode from 'jwt-decode'
 import api from './services/api'
 import Routes from './routes'

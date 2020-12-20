@@ -1,17 +1,16 @@
 import { useEffect, useState } from 'react';
 import {useParams} from 'react-router-dom'
 import {MapContainer, TileLayer, Marker} from 'react-leaflet'
-import { FiClock, FiInfo } from "react-icons/fi";
-import { FaWhatsapp } from 'react-icons/fa'
+import { OrphanageProps } from '../../redux/reducers/orphanagesReducers';
 import api from '../../services/api';
 
+import { FiClock, FiInfo } from "react-icons/fi";
+import { FaWhatsapp } from 'react-icons/fa'
 import Aside from '../../components/Aside';
 import Button from '../../components/Button';
 import mapIcon from '../../utils/mapIcon'
 
 import './styles.css'
-
-import { Orphanage } from '../OrphanagesMap';
 
 interface OrphanageParams {
     id: string;
@@ -20,7 +19,7 @@ interface OrphanageParams {
 function OrphanagesMap() {
     const params = useParams<OrphanageParams>();
 
-    const [orphanage, setOrphanage] = useState<Orphanage>()
+    const [orphanage, setOrphanage] = useState<OrphanageProps>()
     const [activeImageIndex, setActiveImageIndex] = useState(0)
 
     useEffect( () => {

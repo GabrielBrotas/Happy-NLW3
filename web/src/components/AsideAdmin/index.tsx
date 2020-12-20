@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import {FiPower, FiMapPin, FiAlertCircle} from 'react-icons/fi'
 import { useDispatch } from 'react-redux'
-import {logoutUser} from '../../redux/actions/userActions'
+import {logoutUser} from '../../redux/actions/usersActions'
 import { Link, useHistory, useRouteMatch } from 'react-router-dom'
 import mapMarkerImg from '../../assets/images/map-marker.svg'
 

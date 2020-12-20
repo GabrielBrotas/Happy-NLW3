@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {Link, useHistory, useParams, useLocation} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import {resetPassword} from '../../redux/actions/userActions'
+import {resetPassword} from '../../redux/actions/usersActions'
 import { stateProps } from '../../redux/store';
 
 import {FiArrowLeft} from 'react-icons/fi'

@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { stateProps } from '../../redux/store'
+import { getOrphanages } from '../../redux/actions/orphanagesActions'
 import {MapContainer, TileLayer, Marker, Popup} from 'react-leaflet'
-import api from '../../services/api'
 
 import { FiPlus, FiArrowRight } from 'react-icons/fi'
 import mapMarkerImg from '../../assets/images/map-marker.svg'
@@ -11,38 +11,16 @@ import mapIcon from '../..//utils/mapIcon'
 
 import './styles.css'
 
-
-export interface Orphanage {
-    id: number;
-    name: string;
-    latitude: number;
-    longitude: number;
-    about: string;
-    instructions: string;
-    opening_hours: string;
-    open_on_weekends: boolean;
-    images: Array<{
-        id: string;
-        url: string;
-    }>
-}
-
 function OrphanagesMap() {
 
-    const {authenticated} = useSelector((state: stateProps) => state.user)
+    const dispatch = useDispatch();
 
-    const [orphanages, setOrphanages] = useState<Orphanage[]>([])
+    const {authenticated} = useSelector((state: stateProps) => state.user)
+    const {orphanages} = useSelector((state: stateProps) => state.orphanages)
 
     useEffect( () => {
-        getOrphanages();
+        dispatch(getOrphanages())
     }, [])
-
-    function getOrphanages() {
-        api.get('/orphanages')
-            .then( res => {
-                setOrphanages(res.data)        
-            })
-    }
 
     return (
         <div id="page-map">

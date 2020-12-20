@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
 import { useDispatch, useSelector } from 'react-redux';
-import {loginUser} from '../../redux/actions/userActions'
+import {loginUser} from '../../redux/actions/usersActions'
 import { stateProps } from '../../redux/store';
 
 import {FiArrowLeft} from 'react-icons/fi'

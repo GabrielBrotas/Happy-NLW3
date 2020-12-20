@@ -1,7 +1,8 @@
 import {createStore, combineReducers, applyMiddleware, compose} from 'redux'
 import thunk from 'redux-thunk'
 
-import userReducer from './reducers/userReducer'
+import usersReducer from './reducers/usersReducer'
+import orphanagesReducer, { OrphanageProps } from './reducers/orphanagesReducers'
 
 const middleware = [thunk]
 
@@ -12,15 +13,20 @@ export interface stateProps {
         credentials: {
             id: string,
             email: string,
-            name: string,
+            name: string,   
         },
         authenticated: boolean,
         error: string
+    },
+    orphanages: {
+        orphanage: OrphanageProps,
+        orphanages: Array<OrphanageProps> 
     }
 }
 
 const reducers = combineReducers({
-    user: userReducer
+    user: usersReducer,
+    orphanages: orphanagesReducer,
 })
 
 const store = createStore(
