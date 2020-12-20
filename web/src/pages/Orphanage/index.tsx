@@ -8,7 +8,6 @@ import { stateProps } from '../../redux/store';
 import { FiClock, FiInfo } from "react-icons/fi";
 import { FaWhatsapp } from 'react-icons/fa'
 import Aside from '../../components/Aside';
-import Button from '../../components/Button';
 import mapIcon from '../../utils/mapIcon'
 
 import './styles.css'
@@ -106,10 +105,10 @@ function OrphanagesMap() {
                         )}
                     </div>
 
-                    <Button>
+                    <button className="button">
                         <FaWhatsapp size={20} color="#fff" />
                         Entrar em contato
-                    </Button>
+                    </button>
                       
                 </div>
             </div>

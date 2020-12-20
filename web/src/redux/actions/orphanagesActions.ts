@@ -29,3 +29,12 @@ export const createOrphanage = (orphanageData: FormData, push: Function) => (dis
             alert("something went wrong");
         })
 }
+
+export const orphanagePendingResponse = (id: string, adminResponse: boolean, push: Function) => (dispatch: Function) => {
+
+    api.post(`/orphanages/accept-response/${id}`, {adminResponse})
+        .then( () => {
+            dispatch(getOrphanages(true))
+            push('/dashboard/orphanages-registered')
+        })
+}

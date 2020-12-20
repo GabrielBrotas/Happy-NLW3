@@ -13,12 +13,11 @@ import ForgetPassword from './pages/ForgetPassword'
 import ResetPassword from './pages/ResetPassword'
 import OrphanagesRegistered from './pages/Dashboard/OrphanagesRegistered'
 import OrphanagesPending from './pages/Dashboard/OrphanagesPending'
-import OrphanageEditOrConfirm from './pages/Dashboard/OrphanageEditOrConfirm'
+import OrphanageEdit from './pages/Dashboard/OrphanageEdit'
+import OrphanagePending from './pages/Dashboard/OrphanagePending'
 import OrphanageDelete from './pages/Dashboard/OrphanageDelete'
 
 function Routes() {
-
-    const {authenticated} = useSelector( (state: stateProps) => state.user)
 
     return (
     <BrowserRouter>
@@ -34,8 +33,8 @@ function Routes() {
             
             <AuthRoute path="/dashboard/orphanages-registered" exact component={OrphanagesRegistered} />
             <AuthRoute path="/dashboard/orphanages-pending" exact component={OrphanagesPending} />
-            <AuthRoute path="/dashboard/orphanages-registered/:action/:id" component={OrphanageEditOrConfirm} />
-            <AuthRoute path="/dashboard/orphanages-pending/:action/:id" component={OrphanageEditOrConfirm} />
+            <AuthRoute path="/dashboard/orphanages-registered/edit/:id" component={OrphanageEdit} />
+            <AuthRoute path="/dashboard/orphanages-pending/:id" component={OrphanagePending} />
             <AuthRoute path="/dashboard/orphanages-registered/delete/:id" component={OrphanageDelete} />
         </Switch>
     </BrowserRouter>         

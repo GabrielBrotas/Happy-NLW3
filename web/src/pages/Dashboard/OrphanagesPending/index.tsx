@@ -21,7 +21,7 @@ function OrphanagesPending() {
     }, [dispatch])
     
     function handleGoToAcceptOrDeclineOrphanagePage(id: number) {
-        push(`/dashboard/orphanages-pending/pending/${id}`)
+        push(`/dashboard/orphanages-pending/${id}`)
     }
 
     return (
@@ -57,7 +57,7 @@ function OrphanagesPending() {
                             </MapContainer>
 
                             <div className="orphanage-footer">
-                                <h2>Orfanato da Gleba E</h2>
+                                <h2>{orphanage.name}</h2>
 
                                 <button onClick={() => handleGoToAcceptOrDeclineOrphanagePage(orphanage.id)}>
                                     <FiArrowRight size={16} color="#15C3D6" />

@@ -4,9 +4,6 @@ import { useHistory } from 'react-router-dom'
 
 import { FiPlus } from 'react-icons/fi'
 import Aside from '../../components/Aside'
-import Button from '../../components/Button'
-import Input from '../../components/Input'
-import Textarea from '../../components/Textarea'
 import mapIcon from '../../utils/mapIcon'
 
 import './styles.css'
@@ -111,21 +108,26 @@ function CreateOrphanage() {
                         
                     </div>
 
-                    <fieldset>
-                        <Input 
-                            label="Nome" 
-                            name="name"
-                            value={name}
-                            setValue={setName}
-                        />
-                        
-                        <Textarea 
-                            label="Sobre" 
-                            name="about" 
-                            sublabel="máximo de 300 caracteres" 
-                            value={about}
-                            setValue={setAbout}
-                        />
+                        <fieldset>
+                        <div className="input">
+                            <label htmlFor="name">Nome</label>
+                            <input 
+                            type="text" 
+                            name="name" 
+                            value={name} 
+                            onChange={ e => setName(e.target.value)} 
+                            />
+                        </div>
+
+                        <div className="textarea">
+                            <label htmlFor="Sobre">Sobre <span>máximo de 300 caracteres</span></label>
+                            <textarea 
+                                rows={5} 
+                                name="about" 
+                                value={about}
+                                onChange={ e => setAbout(e.target.value)}
+                                />
+                        </div>
 
                         <div className="images-section">
                             <label>Fotos</label>
@@ -152,19 +154,25 @@ function CreateOrphanage() {
                         <h2>Visitação</h2>
                         <hr />
 
-                        <Textarea 
-                            label="Visitação"   
-                            name="instructions"
-                            value={instructions}
-                            setValue={setInstructions}
-                        />
-
-                        <Input 
-                            label="Horário das visitas" 
-                            name="opening-hours"
-                            value={openingHours}
-                            setValue={setOpeningHours}
-                        />
+                        <div className="textarea">
+                            <label htmlFor="instructions">Instruções</label>
+                            <textarea 
+                                rows={5} 
+                                name="instructions" 
+                                value={instructions}
+                                onChange={ e => setInstructions(e.target.value)}
+                                />
+                        </div>
+                        
+                        <div className="input">
+                            <label htmlFor="opening-hours">Horário das visitas</label>
+                            <input 
+                            type="text" 
+                            name="opening-hours" 
+                            value={openingHours} 
+                            onChange={ e => setOpeningHours(e.target.value)} 
+                            />
+                        </div>
                         
                         <div className="open-on-weekends">
                             <p>Atende fim de semana?</p>
@@ -174,9 +182,9 @@ function CreateOrphanage() {
                             </div>
                         </div>
                         
-                        <Button type="submit" >
+                        <button type="submit" className="button" >
                             Confirmar
-                        </Button>
+                        </button>
                     </fieldset>
 
                 </form>

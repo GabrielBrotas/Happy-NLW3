@@ -11,7 +11,7 @@ export default {
 
       const orphanagesRepository = getRepository(Orphanage)
 
-      // pegar todos orfanatos sem parametros no find para pegar todos
+      // pegar todos orfanatos sem parametroys no find para pegar todos
       const orphanages = await orphanagesRepository.find({
         where: {accepted: accepted === "true"},
         relations: ['images'] // nome da coluna relacionada que tem as imagens
