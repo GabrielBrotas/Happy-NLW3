@@ -15,6 +15,12 @@ export default class User{
     @Column()
     password: string;
 
+    @Column()
+    passwordResetToken: string;
+
+    @Column()
+    passwordResetTokenExpires: Date;
+
     generateToken() {
         return jwt.sign({ id: this.id}, 'secret', {
             expiresIn: 86400

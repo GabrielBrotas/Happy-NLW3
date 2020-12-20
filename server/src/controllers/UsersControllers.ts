@@ -2,6 +2,8 @@ import {Request, Response} from 'express';
 import { getRepository } from 'typeorm';
 import * as Yup from 'yup'
 import bcrypt from 'bcrypt';
+import crypto from 'crypto'
+import mailer from '../config/nodemailer'
 
 import User from '../models/User'
 
@@ -45,7 +47,13 @@ export default {
 
     async create(req: Request, res: Response) {
         const {name, email, password} = req.body
-        let newUserData = {name, email, password}
+        let newUserData = {
+            name,
+            email,
+            password,
+            passwordResetToken: "",
+            passwordResetTokenExpires: "",
+        }
         
         const usersRepository = getRepository(User)
 
@@ -69,7 +77,7 @@ export default {
         })
 
         if(!emailAlreadyExists) {
-           
+     
             const salt = bcrypt.genSaltSync(10)
             const hash = bcrypt.hashSync(password, salt)
             
@@ -82,5 +90,79 @@ export default {
             return res.status(400).send({error: "email already exists"})
         }
         
+    },
+
+    async forgetPassword(req: Request, res: Response) {
+        const {email} = req.body
+
+        const usersRepository = getRepository(User)
+        const user = await usersRepository.findOne({email})
+
+        if(!user) {
+            return res.status(404).send("user not found")
+        }
+
+        const token = crypto.randomBytes(10).toString('hex')
+        const now = new Date();
+        now.setHours(now.getHours() + 1)
+
+        user.passwordResetToken = token
+        user.passwordResetTokenExpires = now
+
+        await usersRepository.save(user)
+        
+        mailer.sendMail({
+            to: user.email,
+            from: "gbrotas22@gmail.com",
+            subject: 'reset password',
+            html: `
+            <h2>Esqueceu sua senha?</h2>
+            <p>Não tem problema, utilize este token: ${token}</p>
+            `
+        }, (err) => {
+            if(err) {
+                return res.status(400).send({error: "cannot send this email"})
+            }
+
+            return res.send()
+        })
+    },
+
+    async resetPassword(req: Request, res: Response) {
+        const {email, password, confirmPassword, token} = req.body
+
+        const data = {email, password, confirmPassword, token}
+
+        const schema = Yup.object().shape({
+            email: Yup.string().required(),
+            password: Yup.string().required(),
+            confirmPassword: Yup.string().required(),
+            token: Yup.string().required()
+        })
+
+        await schema.validate(data, {
+            abortEarly: false
+        })
+
+        const usersRepository = getRepository(User)
+        const user = await usersRepository.findOne({email})
+
+        const salt = bcrypt.genSaltSync(10)
+        const hash = bcrypt.hashSync(password, salt)
+        
+        if(!user) { return res.status(400).send("user not found")}
+        
+        const now = new Date();
+
+        if(user.passwordResetToken === token && user.passwordResetTokenExpires >= now ) {
+            user.password = hash
+            user.passwordResetToken = ""
+            user.passwordResetTokenExpires = new Date()
+            await usersRepository.save(user)             
+            return res.status(200).send("password changed")
+        } else {
+            return res.status(400).send("something went wrong")
+        }
+
     }
 }
