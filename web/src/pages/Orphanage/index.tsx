@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import {useParams} from 'react-router-dom'
 import {MapContainer, TileLayer, Marker} from 'react-leaflet'
-import { OrphanageProps } from '../../redux/reducers/orphanagesReducers';
-import api from '../../services/api';
+import { useDispatch, useSelector } from 'react-redux';
+import { getOrphanage } from '../../redux/actions/orphanagesActions';
+import { stateProps } from '../../redux/store';
 
 import { FiClock, FiInfo } from "react-icons/fi";
 import { FaWhatsapp } from 'react-icons/fa'
@@ -18,22 +19,16 @@ interface OrphanageParams {
 
 function OrphanagesMap() {
     const params = useParams<OrphanageParams>();
+    const dispatch = useDispatch();
 
-    const [orphanage, setOrphanage] = useState<OrphanageProps>()
+    const {orphanage} = useSelector((state: stateProps) => state.orphanages)
     const [activeImageIndex, setActiveImageIndex] = useState(0)
 
     useEffect( () => {
-        getOrphanages(params.id)
-    }, [params.id])
-
-    function getOrphanages(id: string) {
-        api.get(`orphanages/${id}`)
-        .then( res => {
-            setOrphanage(res.data)
-        })
-    }
-
-    if(!orphanage) {
+        dispatch(getOrphanage(params.id))
+    }, [params.id, dispatch])
+    
+    if(!orphanage.id) {
         return <p>Loading...</p>
     }
 

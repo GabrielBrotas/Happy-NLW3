@@ -11,7 +11,7 @@ const routes = Router()
 const upload = multer(uploadConfig)
 
 routes.get('/orphanages/:accepted', OrphangesController.index)
-routes.get('/orphanages/:id', OrphangesController.show)
+routes.get('/orphanage/:id', OrphangesController.show)
 routes.post('/orphanages/accept-response/:id', OrphangesController.acceptOrphanageResponse)
 
 routes.get('/user/:id', UsersController.getUserData)

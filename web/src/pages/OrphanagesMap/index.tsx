@@ -19,7 +19,7 @@ function OrphanagesMap() {
     const {orphanages} = useSelector((state: stateProps) => state.orphanages)
 
     useEffect( () => {
-        dispatch(getOrphanages())
+        dispatch(getOrphanages(true))
     }, [])
 
     return (

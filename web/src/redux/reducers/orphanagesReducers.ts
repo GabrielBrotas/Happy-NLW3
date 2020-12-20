@@ -1,4 +1,4 @@
-import { GET_ORPHANAGES } from "../types"
+import { GET_ORPHANAGE, GET_ORPHANAGES } from "../types"
 
 
 const initialState = {
@@ -32,7 +32,10 @@ export default function orphanagesReducer(state = initialState, action: actionPr
     switch (action.type) {
         case GET_ORPHANAGES:
             return {...state, orphanages: action.payload}
-
+            
+        case GET_ORPHANAGE:
+            return {...state, orphanage: action.payload}
+            
         default: 
         return state
     }
