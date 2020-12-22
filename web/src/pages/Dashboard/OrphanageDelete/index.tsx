@@ -1,13 +1,23 @@
-import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useHistory, useParams } from 'react-router-dom';
+import {deleteOrphanage} from '../../../redux/actions/orphanagesActions'
+
 import sorryMarker from '../../../assets/images/sorry-marker.svg'
 import './styles.css'
 
-function DeleteOrphanage() {    
-    const history = useHistory();
+interface paramsProps {
+    id: string
+}
 
+function DeleteOrphanage() {    
+    const dispatch = useDispatch();
+    const {push} = useHistory();
+    const {id} = useParams<paramsProps>();
+    
     function handleGoToDashboard() {
-        history.push('/dashboard/orphanages-registered')
+        dispatch(deleteOrphanage(id, push))
     }
+
     return (
         <main id="page-landing-delete" >
             <div className="delete-page-wrapper">
@@ -16,7 +26,7 @@ function DeleteOrphanage() {
                     <p>Você tem certeza que deseja excluir o Orfanato gleba e?</p>
 
                     <button onClick={handleGoToDashboard}>
-                        Voltar para o mapa
+                        Deletar
                     </button>
                 </div>
 

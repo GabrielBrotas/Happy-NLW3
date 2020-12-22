@@ -1,4 +1,5 @@
 import api from "../../services/api"
+import { OrphanageProps } from "../reducers/orphanagesReducers";
 import { GET_ORPHANAGE, GET_ORPHANAGES } from "../types";
 
 export const getOrphanages = (acceptedOrphanages: boolean) => (dispatch: Function) => {
@@ -37,4 +38,16 @@ export const orphanagePendingResponse = (id: string, adminResponse: boolean, pus
             dispatch(getOrphanages(true))
             push('/dashboard/orphanages-registered')
         })
+}
+
+export const deleteOrphanage = (id: string, push: Function) => (dispatch: Function) => {
+    api.delete(`/orphanage/${id}`).then( () => {
+        dispatch(getOrphanages(true))
+        alert("Orfanato deletado com sucesso!!")
+        push('/dashboard/orphanages-registered')
+    })
+}
+
+export const updateOrphanage = (id: string, data: OrphanageProps ,push: Function) => (dispatch: Function) => {
+    
 }
