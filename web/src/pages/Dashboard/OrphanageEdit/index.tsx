@@ -1,37 +1,54 @@
-import { ChangeEvent, FormEvent, useCallback, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { MapContainer, Marker, TileLayer    , useMapEvent} from 'react-leaflet'
 import { useHistory, useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { stateProps } from '../../../redux/store'
 import { getOrphanage } from '../../../redux/actions/orphanagesActions'
-import api from '../../../services/api'
 
-import { FiPlus, FiXCircle, FiCheck } from 'react-icons/fi'
+import { FiPlus} from 'react-icons/fi'
 import AsideAdmin from '../../../components/AsideAdmin'
 import mapIcon from '../../../utils/mapIcon'
 
 import './styles.css'
 
-
 interface ParamsProps {
-    action: string;
     id: string;
 }
 
 function OrphanageConfirm() {
-    const dispatch = useDispatch()
-    const history = useHistory();
-    const {action, id} = useParams<ParamsProps>();
+    const dispatch = useDispatch();
+    const {id} = useParams<ParamsProps>();
     
     const {orphanage} = useSelector((state: stateProps) => state.orphanages)
 
+    const [name, setName] = useState('')
+    const [about, setAbout] = useState('')
+    const [instructions, setInstructions] = useState('')
+    const [openingHours, setOpeningHours] = useState('')
+    const [openOnWeekends, setOpenOnWeekends] = useState(true)
+    
+    const [latitude, setLatitude] = useState<number>()
+    const [longitude, setLongitude] = useState<number>()
+
+    const [images, setImages] = useState<File[]>([])
+    const [previewImages, setPreviewImages] = useState<string[]>([]);
+
     useEffect( () => {
-        if(action !== "edit" && action !== "pending") {
-            history.push('/dashboard/orphanages-registered')
-        } 
         dispatch(getOrphanage(id))
-        
-    }, [action, history])
+    }, [id])
+
+    useEffect( () => {
+        if(orphanage.id) {
+            setName(orphanage.name)
+            setAbout(orphanage.about)
+            setInstructions(orphanage.instructions)
+            setOpeningHours(orphanage.opening_hours)
+            setOpenOnWeekends(orphanage.open_on_weekends)
+            setLatitude(orphanage.latitude)
+            setLongitude(orphanage.longitude)
+            
+        }
+    },[orphanage])
 
     if(!orphanage.id) {
         return <p>Loading...</p>

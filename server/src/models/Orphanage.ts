@@ -43,7 +43,7 @@ export default class Orphanage {
     o segundo parametro é = dado uma imagem que recebeu, qual o campo dessa imagem que retorna o relacionamento inverso, ou seja, o orfanato em si. 
   */
   @OneToMany( () => Image, image => image.orphanage, {
-    cascade: ['insert', 'update'] // cascade = fazer algo automaticament, sempre que a gnt criar um orfanato ou alterar o cascade vai automaticamente realizar as alterações nas imagens relacionadas com ele
+    cascade: ['insert', 'update', 'remove'] // cascade = fazer algo automaticament, sempre que a gnt criar um orfanato ou alterar o cascade vai automaticamente realizar as alterações nas imagens relacionadas com ele
   })
   @JoinColumn({ name: 'orphanage_id'}) // nome da coluna que vai armazena o relacionamento do orfanato com a imagem
   images: Image[]; // Image[] porque pode ter varias imagens então é um array

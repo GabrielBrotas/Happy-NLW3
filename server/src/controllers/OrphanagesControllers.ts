@@ -1,4 +1,7 @@
 import {Request, Response} from 'express'
+import fs from 'fs'
+import path from 'path'
+import {promisify} from 'util'
 import * as Yup from 'yup' // o yup é uma biblioteca de validação de dados, como ele não tem um export default vamos fazer uma importação de tudo usando o *
 import {getRepository} from 'typeorm' // getRepository = vai determinar todas as operações que formos fazer no DB, criar, deletar, listar, etc. o Repositorio vai deter todas essas regras
 import Orphanage from '../models/Orphanage'
@@ -86,6 +89,30 @@ export default {
     await orphanagesRepository.save(orphanage);
   
     return response.status(200).json( orphanage)
+  },
+
+  async update(request: Request, response: Response) {
+
+  },
+  
+  async delete(request: Request, response: Response) {
+    const {id} = request.params
+    const orphanagesRepository = getRepository(Orphanage)
+
+    const orphanage = await orphanagesRepository.findOne(id, {
+      relations: ['images']
+    })
+
+    if(!orphanage) return response.status(404).send('orphanage not found')
+
+    orphanage.images.map( image => {
+      return promisify(fs.unlink)(path.resolve(__dirname, '..', '..', 'uploads', image.path))
+    })
+
+    await orphanagesRepository.delete(id)
+
+    return response.status(200).send()
+  
   },
 
   async acceptOrphanageResponse(req: Request, res: Response) {

@@ -10,6 +10,7 @@ import './database/connection'
 const app = express();
 
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));  
 app.use(cors())
 app.use(routes)
 app.use('/uploads', express.static(path.join(__dirname, '..', 'uploads')))
