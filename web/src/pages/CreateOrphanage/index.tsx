@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useCallback, useState } from 'react'
+import { ChangeEvent, FormEvent, useCallback, useEffect, useState } from 'react'
 import { MapContainer, Marker, TileLayer    , useMapEvent} from 'react-leaflet'
 import { useHistory } from 'react-router-dom'
 
@@ -27,6 +27,13 @@ function CreateOrphanage() {
     const [images, setImages] = useState<File[]>([])
     const [previewImages, setPreviewImages] = useState<string[]>([]);
 
+    useEffect( () => {
+        navigator.geolocation.getCurrentPosition( pos => {
+            setLatitude(pos.coords.latitude)
+            setLongitude(pos.coords.longitude)
+        })
+    }, [])
+    
     async function handleCreateNewOrphanage(e: FormEvent) {
         e.preventDefault()
         const data = new FormData();
@@ -44,7 +51,6 @@ function CreateOrphanage() {
         })
         
         dispatch(createOrphanage(data, push))
-    
     }
 
     function handleSelectImages(event: ChangeEvent<HTMLInputElement>) {

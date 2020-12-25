@@ -36,4 +36,26 @@
     background: #3CDC8C
 }
 
+#page-create-orphanage main .orphanage-details fieldset .images-section .images-container .image-wrapper{
+    position: relative;
+}
+
+#page-create-orphanage main .orphanage-details fieldset .images-section .images-container .image-wrapper .image-remove-icon{
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    height: 35px;
+    width: 40px;
+    padding: 5px;
+
+    background: #FFFFFF;
+
+    border: 1px solid #D3E2E5;
+    box-sizing: border-box;
+    border-radius: 0px 20px;
+
+    cursor: pointer;
+}
+
 

@@ -116,7 +116,7 @@ export default {
     const {id} = request.params
 
     const orphanagesRepository = getRepository(Orphanage)
-    const imagesRepository = getRepository(Image)
+    // const imagesRepository = getRepository(Image)
 
     const data = {
       name, 
@@ -133,25 +133,27 @@ export default {
 
     // .create apenas vai deixar pre-criado o repositorio, não vai salvar
     const orphanage = await orphanagesRepository.findOne(id)
-   
-    imagesRepository.find({orphanage}).then( async orphanageImages => {
-      orphanageImages.map( image => {
-        imagesRepository.delete(image.id)
-        return promisify(fs.unlink)(path.resolve(__dirname, '..', '..', 'uploads', image.path))
-      })
+    
+    // * update images
+    // imagesRepository.find({orphanage}).then( async orphanageImages => {
+    //   orphanageImages.map( image => {
+    //     imagesRepository.delete(image.id)
+    //     return promisify(fs.unlink)(path.resolve(__dirname, '..', '..', 'uploads', image.path))
+    //   })
       
-      const requestImages = request.files as Express.Multer.File[];
+    //   const requestImages = request.files as Express.Multer.File[];
       
-      const images = requestImages.map( image => {
-        return {
-          path: image.filename,
-          orphanage
-        }
-      })
+    //   const images = requestImages.map( image => {
+    //     return {
+    //       path: image.filename,
+    //       orphanage
+    //     }
+    //   })
 
-      const image = imagesRepository.create(images)
-      await imagesRepository.save(image)
-    })
+    //   const image = imagesRepository.create(images)
+    //   await imagesRepository.save(image)
+    // })
+
     await orphanagesRepository.update(id, data)
     return response.status(200).send("orphanage updated successfully")
   },
