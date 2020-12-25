@@ -5,6 +5,12 @@ const styles = StyleSheet.create({
     container: {
       flex: 1,
     },
+    loadingScreen: {
+      flex: 1, 
+      justifyContent: 'center', 
+      alignItems: 'center',
+      backgroundColor: "#15b6d6"
+    },
     map: {
       width: Dimensions.get('window').width,
       height: Dimensions.get('window').height,

@@ -8,6 +8,7 @@ import OrphanageMap from './pages/OrphanageMap'
 import SelectMapPosition from './pages/CreateOrphanage/SelectMapPosition'
 import OrphanageData from './pages/CreateOrphanage/OrphanageData'
 import Orphanage from './pages/Orphanage'
+import Onboarding from './pages/OnBoarding'
 import Header from './components/Header'
 
 function StackNavigator() {
@@ -18,6 +19,13 @@ function StackNavigator() {
                 screenOptions={{
                     cardStyle: { backgroundColor: "#f2f3f5"} }}
             >
+                <Screen
+                    name="onboarding"
+                    component={Onboarding}
+                    options={{
+                        header: () => null
+                    }}
+                />
                 <Screen 
                     name="OrphanagesMap"
                     component={OrphanageMap}
