@@ -6,11 +6,12 @@
   The user can check the orhanage available in his region, check the visit instructions, photos of the place, contact and also create the orhanages, but just the admin can approve the creation.
   
 ## 💻 Technologies
-  > Node.js; <br />
   > React; <br />
   > React Native; <br />
   > Expo; <br />
   > TypeScript; <br />
+  > Node.js; <br />
+  > SQlite; <br />
 
 # Folders
   <a href="https://github.com/GabrielBrotas/Happy-NLW3/tree/main/web">Web</a> <br />
