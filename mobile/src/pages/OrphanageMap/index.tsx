@@ -78,8 +78,8 @@ function OrphanageMap() {
         provider={PROVIDER_GOOGLE}
         style={styles.map}
         initialRegion={{
-          latitude: -12.7191597,
-          longitude: -38.3334865,
+          latitude,
+          longitude,
           latitudeDelta: 0.008,
           longitudeDelta: 0.008
         }}
@@ -88,7 +88,7 @@ function OrphanageMap() {
         <Marker 
         key={orphanage.id}
         calloutAnchor={{
-          x: 2.4,
+          x: 3,
           y: 0.8
         }}
         coordinate={{

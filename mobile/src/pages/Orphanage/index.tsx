@@ -22,7 +22,7 @@ function OrphanageDetails() {
     const [orphanage, setOrphanage] = useState<Orphanage>()
 
     useEffect( () => {
-        api.get(`/orphanages/${params.id}`).then( res => {
+        api.get(`/orphanage/${params.id}`).then( res => {
             setOrphanage(res.data)
         })
     }, [params])
@@ -34,6 +34,7 @@ function OrphanageDetails() {
     function handleOpenGoogleMapRoutes() {
         Linking.openURL(`https://www.google.com/maps/place/${orphanage?.latitude},${orphanage?.longitude}`)
     }
+
     return(
 
         <ScrollView style={styles.container}>
@@ -68,8 +69,8 @@ function OrphanageDetails() {
                     >
                         <Marker 
                             coordinate={{
-                                latitude: -12.7191597,
-                                longitude: -38.3334865,
+                                latitude: orphanage.latitude,
+                                longitude: orphanage.longitude,
                             }}
                         >
                             <Image source={mapMarker} style={{width: 60, height: 70}} />
