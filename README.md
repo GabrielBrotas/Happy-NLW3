@@ -1,4 +1,4 @@
-# Happy-NLW3
+# Happy-NLW3 Version 2.0
 
 ## 🚀 Project
   <img src="https://github.com/GabrielBrotas/Happy-NLW3/blob/main/images/happy.png" width="700px" height="400px" />
@@ -6,11 +6,12 @@
   The user can check the orhanage available in his region, check the visit instructions, photos of the place, contact and also create the orhanages, but just the admin can approve the creation.
   
 ## 💻 Technologies
-  > Node.js; <br />
   > React; <br />
   > React Native; <br />
   > Expo; <br />
   > TypeScript; <br />
+  > Node.js; <br />
+  > SQlite; <br />
 
 # Folders
   <a href="https://github.com/GabrielBrotas/Happy-NLW3/tree/main/web">Web</a> <br />
