@@ -1,4 +1,4 @@
-# Happy-NLW3
+# Happy-NLW3 Version 2.0
 
 ## 🚀 Project
   <img src="https://github.com/GabrielBrotas/Happy-NLW3/blob/main/images/happy.png" width="700px" height="400px" />
