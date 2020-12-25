@@ -11,9 +11,9 @@ const styles = StyleSheet.create({
         color: "#0089A5", 
         fontWeight: '800', 
         fontSize: 40, 
-        lineHeight: 40, 
+        lineHeight: 45, 
         textAlign: 'left', 
-        width: 200
+        width: 250
     },
     subtitle: {
         color: "#5C8599", 

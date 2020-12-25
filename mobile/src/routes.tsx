@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import { createStackNavigator} from '@react-navigation/stack'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 const {Navigator, Screen} = createStackNavigator()
 
@@ -13,53 +14,77 @@ import Header from './components/Header'
 
 function StackNavigator() {
     
+    const [isUserFirstTime, setUserFirstTime] = useState<boolean | null>()
+
+    useEffect( () => {    
+        AsyncStorage.getItem('alreadyLaunched')
+            .then( value => {
+                if(value === null) {
+                    AsyncStorage.setItem('alreadyLaunched', 'true')
+                    setUserFirstTime(true)
+                } else {
+                    setUserFirstTime(false)
+                }
+
+            })
+    }, [])
+
+    if(isUserFirstTime === null) {
+        return null
+    }
+
     return(
         <NavigationContainer>
             <Navigator 
                 screenOptions={{
                     cardStyle: { backgroundColor: "#f2f3f5"} }}
             >
-                <Screen
+                {isUserFirstTime ? (
+                    <Screen
                     name="onboarding"
                     component={Onboarding}
                     options={{
                         header: () => null
                     }}
-                />
-                <Screen 
+                  />
+                ) : (
+                <>
+                    <Screen 
                     name="OrphanagesMap"
                     component={OrphanageMap}
                     options={{ 
                         header: () => null
                     }}
-                />
-                
-                <Screen 
-                    name="SelectMapPosition" 
-                    component={SelectMapPosition} 
-                    options={{
-                        headerShown: true,
-                        header: () => <Header title="Selecione no mapa" />
-                    }}
-                />
-                
-                <Screen 
-                    name="OrphanageData"
-                    component={OrphanageData}
-                    options={{
-                        headerShown: true,
-                        header: () => <Header title="Informe os dados" />
-                    }}
-                />
+                    />
+                    
+                    <Screen 
+                        name="SelectMapPosition" 
+                        component={SelectMapPosition} 
+                        options={{
+                            headerShown: true,
+                            header: () => <Header title="Selecione no mapa" />
+                        }}
+                    />
+                    
+                    <Screen 
+                        name="OrphanageData"
+                        component={OrphanageData}
+                        options={{
+                            headerShown: true,
+                            header: () => <Header title="Informe os dados" />
+                        }}
+                    />
 
-                <Screen
-                  name="OrphanageDetails"
-                  component={Orphanage}
-                  options={{
-                    headerShown: true,
-                    header: () => <Header showCancel={false} title="Orfanato" />
-                  }}
-                />
+                    <Screen
+                    name="OrphanageDetails"
+                    component={Orphanage}
+                    options={{
+                        headerShown: true,
+                        header: () => <Header showCancel={false} title="Orfanato" />
+                    }}
+                    />
+                </>
+                )}
 
             </Navigator>
         </NavigationContainer>

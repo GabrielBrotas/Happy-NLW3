@@ -1,8 +1,11 @@
 import React from 'react'
-import {Image, View} from 'react-native'
-import {Feather} from '@expo/vector-icons'
+import {Image, TouchableOpacity, View} from 'react-native'
+import { useNavigation } from '@react-navigation/native'
 import Onboarding from 'react-native-onboarding-swiper'
 
+import {Feather} from '@expo/vector-icons'
+import imageOne from '../../assets/images/on-boarding-1.png'
+import imageTwo from '../../assets/images/on-boarding-2.png'
 import styles from './styles'
 
 interface DotProps {
@@ -10,11 +13,19 @@ interface DotProps {
     selected: boolean;
 }
 
-const NextButton = () => {
+const NextButton = ({...props}) => {
     return (
-        <View style={styles.nextButton}>
+        <TouchableOpacity style={styles.nextButton} {...props}>
             <Feather name="arrow-right" size={30} color="#15b6d6" />
-        </View>
+        </TouchableOpacity>
+    )
+}
+
+const DoneButton = ({...props}) => {
+    return (
+        <TouchableOpacity style={styles.nextButton} {...props}>
+            <Feather name='check' size={30} color="#15b6d6" />
+        </TouchableOpacity>
     )
 }
 
@@ -31,6 +42,8 @@ const DotPagination = (props: DotProps) => {
 }
 
 function OnboardingScreens() {
+    const {navigate} = useNavigation();
+
     return (
         <Onboarding
         bottomBarColor="#fff"
@@ -38,21 +51,23 @@ function OnboardingScreens() {
         containerStyles={styles.container}
         titleStyles={styles.title}
         subTitleStyles={styles.subtitle}
-        NextButtonComponent={() => <NextButton />}
+        NextButtonComponent={NextButton}
+        DoneButtonComponent={DoneButton}
+        onDone={() => navigate('OrphanagesMap')}
         DotComponent={(props) => <DotPagination {...props} />}
         showSkip={false}
         pages={[
             {
             backgroundColor: '#fff',
-            image: <Image source={require('../../assets/images/on-boarding-1.png')} />,
+            image: <Image source={imageOne}  style={{width: 250, height: 250}} />,
             title: 'Leve felicidade para o mundo',
             subtitle: 'Visite o orfanatos e mude o dia de muitas crianças',
             },
             {
             backgroundColor: '#fff',
-            image: <Image source={require('../../assets/images/on-boarding-2.png')} />,
-            title: 'Onboarding 2',
-            subtitle: 'Done with React Native Onboarding Swiper',
+            image: <Image source={imageTwo} style={{width: 220, height: 330}} />,
+            title: 'Escolha um orfanato no mapa e faça uma visita',
+            subtitle: '',
             }
         ]}
         />
