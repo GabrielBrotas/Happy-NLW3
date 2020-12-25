@@ -1,16 +1,20 @@
 import { useState } from 'react';
 import {FiArrowLeft} from 'react-icons/fi'
+import { useDispatch } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
+import { CLEAR_ERROR } from '../../redux/types';
 
 import mapMarker from '../../assets/images/map-marker.svg';
 import api from '../../services/api';
 
 function ForgetPassword() {
+    const dispatch = useDispatch();
     const {push} = useHistory();
     const [email, setEmail] = useState('');
     
     function handleSendEmailToResetPassowrd() {
         api.post('/forget-password', {email})
+        dispatch({type: CLEAR_ERROR})
         alert("Check your email to reset password") 
         push('/login')
     }

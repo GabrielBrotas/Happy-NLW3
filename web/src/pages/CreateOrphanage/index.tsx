@@ -84,6 +84,10 @@ function CreateOrphanage() {
         return null
     }
 
+    if(!latitude || !longitude) {
+        return <p>loading...</p>
+    }
+
     return(
         <div id="page-create-orphanage">
             <Aside />
@@ -97,7 +101,7 @@ function CreateOrphanage() {
 
                     <div className="map-container">
                         <MapContainer
-                            center={[-12.7227001, -38.3271215]}
+                            center={[latitude, longitude]}
                             zoom={16}   
                             style={{width: '100%', height: 200}}
                         >

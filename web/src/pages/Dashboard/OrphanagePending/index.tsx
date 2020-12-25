@@ -24,7 +24,7 @@ function OrphanageConfirm() {
 
     useEffect( () => { 
         dispatch(getOrphanage(id))
-    }, [id])
+    }, [id, dispatch])
 
     function handleAdminResponseToOrphanagePending(adminResponse: boolean) {
         dispatch(orphanagePendingResponse(id, adminResponse, push))

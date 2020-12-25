@@ -28,7 +28,7 @@ export const createOrphanage = (orphanageData: FormData, push: Function) => (dis
             push('/app')
             dispatch(getOrphanages(true))
         })
-        .catch( () => {
+        .catch( (err) => {
             alert("something went wrong");
         })
 }
