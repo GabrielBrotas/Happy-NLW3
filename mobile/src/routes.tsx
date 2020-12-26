@@ -16,17 +16,16 @@ import Header from './components/Header'
 function StackNavigator() {
 
     const {isUserFirstTime, setUserFirstTime } = useContext(UserContext) 
-    // const [renderOnBoarding, setRenderOnBoarding] = useState(false)
 
     useEffect( () => {
         AsyncStorage.getItem("alreadyLaunched")
-            .then( (value) => {
-                if(value === null) {
-                    setUserFirstTime(true)
-                } else {
-                    setUserFirstTime(false)
-                }
-            })    
+        .then( (value) => {
+            if(value === null) {
+                setUserFirstTime(true)
+            } else {
+                setUserFirstTime(false)
+            }
+        })    
     }, [isUserFirstTime])
 
     if(isUserFirstTime === null) {
