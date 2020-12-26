@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { getOrphanages } from '../../../redux/actions/orphanagesActions'
 import { stateProps } from '../../../redux/store'
+import { CLEAR_ORPHANAGE } from '../../../redux/types'
 
 import AsideAdmin from '../../../components/AsideAdmin'
 import mapIcon from '../../../utils/mapIcon'
@@ -18,6 +19,7 @@ function OrphanagesPending() {
     
     useEffect( () => {
         dispatch(getOrphanages(false))
+        dispatch({type: CLEAR_ORPHANAGE})
     }, [dispatch])
     
     function handleGoToAcceptOrDeclineOrphanagePage(id: number) {

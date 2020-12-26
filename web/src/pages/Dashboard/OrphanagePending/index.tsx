@@ -30,7 +30,7 @@ function OrphanageConfirm() {
         dispatch(orphanagePendingResponse(id, adminResponse, push))
     }
 
-    if(!orphanage.id) {
+    if(!orphanage.id || (!orphanage.latitude || !orphanage.longitude)) {
         return <p>Loading...</p>
     }
 

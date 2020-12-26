@@ -36,12 +36,12 @@ function OrphanageConfirm() {
     const [latitude, setLatitude] = useState<number | null>()
     const [longitude, setLongitude] = useState<number | null>()
 
-    const [images, setImages] = useState<File[]>([])
+    // const [images, setImages] = useState<File[]>([])
     const [previewImages, setPreviewImages] = useState<imageProps[]>([]);
 
     useEffect( () => {
         dispatch(getOrphanage(id))
-    }, [id])
+    }, [id, dispatch])
 
     useEffect( () => {
         if(orphanage.id) {
@@ -111,8 +111,8 @@ function OrphanageConfirm() {
 
         return null
     }
-
-    if(!orphanage.id || (!latitude || !longitude)) {
+    
+    if(!orphanage.id || !latitude || !longitude) {
         return <p>Loading...</p>
     }
 

@@ -1,6 +1,8 @@
-import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
-import {deleteOrphanage} from '../../../redux/actions/orphanagesActions'
+import {deleteOrphanage, getOrphanage} from '../../../redux/actions/orphanagesActions'
+import { stateProps } from '../../../redux/store';
 
 import sorryMarker from '../../../assets/images/sorry-marker.svg'
 import './styles.css'
@@ -14,8 +16,18 @@ function DeleteOrphanage() {
     const {push} = useHistory();
     const {id} = useParams<paramsProps>();
     
+    const {orphanage} = useSelector((state: stateProps) => state.orphanages)
+
+    useEffect(() => {
+        dispatch(getOrphanage(id))
+    })
+
     function handleGoToDashboard() {
         dispatch(deleteOrphanage(id, push))
+    }
+
+    if(!orphanage.id) {
+        return <p>loading...</p>
     }
 
     return (
@@ -23,7 +35,7 @@ function DeleteOrphanage() {
             <div className="delete-page-wrapper">
                 <div className="delete-orphanage-info">
                     <h2>Excluir!</h2>
-                    <p>Você tem certeza que deseja excluir o Orfanato gleba e?</p>
+                    <p>Você tem certeza que deseja excluir {orphanage.name}?</p>
 
                     <button onClick={handleGoToDashboard}>
                         Deletar

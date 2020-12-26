@@ -4,13 +4,13 @@ import { useDispatch, useSelector } from 'react-redux'
 import { stateProps } from '../../../redux/store'
 import { getOrphanages } from '../../../redux/actions/orphanagesActions'
 import { MapContainer, TileLayer, Marker } from 'react-leaflet'
+import { CLEAR_ORPHANAGE } from '../../../redux/types'
 
 import AsideAdmin from '../../../components/AsideAdmin'
 import mapIcon from '../../../utils/mapIcon'
 import { FiEdit, FiTrash2 } from 'react-icons/fi'
 
 import './styles.css'
-
 
 function OrphanagesRegistered() {
     const {push} = useHistory();
@@ -20,6 +20,7 @@ function OrphanagesRegistered() {
     
     useEffect( () => {
         dispatch(getOrphanages(true))
+        dispatch({type: CLEAR_ORPHANAGE})
     }, [dispatch])
 
     function handleEditOrphanage(id: number) {

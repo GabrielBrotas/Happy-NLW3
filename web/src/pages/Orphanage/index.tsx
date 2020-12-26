@@ -27,7 +27,7 @@ function OrphanagesMap() {
         dispatch(getOrphanage(params.id))
     }, [params.id, dispatch])
     
-    if(!orphanage.id) {
+    if(!orphanage.id || (!orphanage.latitude && !orphanage.longitude)) {
         return <p>Loading...</p>
     }
 
