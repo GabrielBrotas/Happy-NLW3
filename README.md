@@ -1,10 +1,17 @@
 # Happy-NLW3 Version 2.0
 
 ## 🚀 Project
-  <img src="https://github.com/GabrielBrotas/Happy-NLW3/blob/main/images/happy.png" width="700px" height="400px" />
+    
+
   Application developed to connect people and orphanages. <br /> 
   The user can check the orhanage available in his region, check the visit instructions, photos of the place, contact and also create the orhanages, but just the admin can approve the creation.
   
+## Web View
+<img src="https://github.com/GabrielBrotas/Happy-NLW3/blob/main/images/happy-web.gif" width="800px" height="500px" />
+
+## Mobile View
+<img src="https://github.com/GabrielBrotas/Happy-NLW3/blob/main/images/happy-mobile.gif" width="800px" height="500px" />
+
 ## 💻 Technologies
   > React; <br />
   > React Native; <br />
