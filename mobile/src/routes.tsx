@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import { createStackNavigator} from '@react-navigation/stack'
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import {UserContext} from './userContext'
 
 const {Navigator, Screen} = createStackNavigator()
 
@@ -13,21 +14,20 @@ import Onboarding from './pages/OnBoarding'
 import Header from './components/Header'
 
 function StackNavigator() {
-    
-    const [isUserFirstTime, setUserFirstTime] = useState<boolean | null>()
 
-    useEffect( () => {    
-        AsyncStorage.getItem('alreadyLaunched')
-            .then( value => {
+    const {isUserFirstTime, setUserFirstTime } = useContext(UserContext) 
+    // const [renderOnBoarding, setRenderOnBoarding] = useState(false)
+
+    useEffect( () => {
+        AsyncStorage.getItem("alreadyLaunched")
+            .then( (value) => {
                 if(value === null) {
-                    AsyncStorage.setItem('alreadyLaunched', 'true')
                     setUserFirstTime(true)
                 } else {
                     setUserFirstTime(false)
                 }
-
-            })
-    }, [])
+            })    
+    }, [isUserFirstTime])
 
     if(isUserFirstTime === null) {
         return null

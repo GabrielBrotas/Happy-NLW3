@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Image } from 'react-native';
+import { View, Text, TextInput, Image, KeyboardAvoidingView } from 'react-native';
 import { RectButton, ScrollView, Switch, TouchableOpacity } from 'react-native-gesture-handler';
 import {Feather} from '@expo/vector-icons'
 import {useNavigation, useRoute} from '@react-navigation/native'
@@ -78,6 +78,11 @@ function OrphanageData() {
     }
 
     return (
+        <KeyboardAvoidingView 
+            behavior="padding"
+            style={{flex: 1}}
+        >
+
         <ScrollView style={styles.container} contentContainerStyle={{padding: 24}}>
             <Text style={styles.title}>Dados</Text>
 
@@ -153,6 +158,7 @@ function OrphanageData() {
             </RectButton>
 
         </ScrollView>
+        </KeyboardAvoidingView>
     )
 }
 

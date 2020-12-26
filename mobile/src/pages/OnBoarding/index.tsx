@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import {Image, TouchableOpacity, View} from 'react-native'
-import { useNavigation } from '@react-navigation/native'
+import {UserContext} from '../../userContext'
 import Onboarding from 'react-native-onboarding-swiper'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 import {Feather} from '@expo/vector-icons'
 import imageOne from '../../assets/images/on-boarding-1.png'
@@ -41,8 +42,14 @@ const DotPagination = (props: DotProps) => {
     )
 }
 
-function OnboardingScreens() {
-    const {navigate} = useNavigation();
+export default function OnboardingScreens() {
+
+    const { setUserFirstTime } = useContext(UserContext) 
+
+    function handleSawOnBoardFirtsTime() {
+        AsyncStorage.setItem('alreadyLaunched', 'true')
+        setUserFirstTime(false)
+    }
 
     return (
         <Onboarding
@@ -53,7 +60,7 @@ function OnboardingScreens() {
         subTitleStyles={styles.subtitle}
         NextButtonComponent={NextButton}
         DoneButtonComponent={DoneButton}
-        onDone={() => navigate('OrphanagesMap')}
+        onDone={handleSawOnBoardFirtsTime}
         DotComponent={(props) => <DotPagination {...props} />}
         showSkip={false}
         pages={[
@@ -74,4 +81,3 @@ function OnboardingScreens() {
     )
 }
 
-export default OnboardingScreens
