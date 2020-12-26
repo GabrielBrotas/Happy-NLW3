@@ -84,18 +84,18 @@ function OrphanageData() {
         >
 
         <ScrollView style={styles.container} contentContainerStyle={{padding: 24}}>
-            <Text style={styles.title}>Dados</Text>
+            <Text style={styles.title}>Data</Text>
 
             <View style={styles.separator} />
 
-            <Text style={styles.label}>Nome</Text>
+            <Text style={styles.label}>Name</Text>
             <TextInput 
                 style={styles.input}
                 value={name}
                 onChangeText={setName}
             />
             
-            <Text style={styles.label}>Sobre</Text>
+            <Text style={styles.label}>About</Text>
             <TextInput 
                 style={[styles.input, {height: 100}]} 
                 multiline 
@@ -103,10 +103,10 @@ function OrphanageData() {
                 onChangeText={setAbout}
             />
 
-            <Text style={styles.label}>Numero do Whatsapp</Text>
+            <Text style={styles.label}>Whatsapp</Text>
             <TextInput style={styles.input} />
     
-            <Text style={styles.label}>Fotos</Text>
+            <Text style={styles.label}>Pictures</Text>
             <View style={styles.uploadedImagesContainer}>
                 {images.map( image => {
                     return (
@@ -124,11 +124,11 @@ function OrphanageData() {
                 <Feather name="plus" size={20} color="#96d2f0" />
             </TouchableOpacity>
 
-            <Text style={styles.title}>Visitação</Text>
+            <Text style={styles.title}>Visitation</Text>
             
             <View style={styles.separator} />
 
-            <Text style={styles.label}>Instruções</Text>
+            <Text style={styles.label}>Instructions</Text>
             <TextInput 
                 style={[styles.input, {height: 100}]}
                 multiline
@@ -136,7 +136,7 @@ function OrphanageData() {
                 onChangeText={setInstructions}    
             />
     
-            <Text style={styles.label}>Horário das Visitas</Text>
+            <Text style={styles.label}>Opening Hours</Text>
             <TextInput 
                 style={styles.input}
                 value={openingHours}
@@ -144,7 +144,7 @@ function OrphanageData() {
             />
 
             <View style={styles.openOnWeekendsContent}>
-                <Text style={styles.label}>Atende final de semana?</Text>
+                <Text style={styles.label}>Open on weekends?</Text>
                 <Switch 
                     thumbColor="#fff"
                     trackColor={{false: "#ccc", true: "#39cc83 "}}

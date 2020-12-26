@@ -50,7 +50,7 @@ function OrphanageDetails() {
 
             <View style={styles.detailsContainer}>
                 <Text style={styles.title}>{orphanage.name}</Text>
-                <Text style={styles.description}>{orphanage.about}</Text>
+                <Text style={styles.description}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </Text>
 
                 <View style={styles.mapContainer}>
                     <MapView
@@ -78,27 +78,27 @@ function OrphanageDetails() {
                     </MapView>
 
                     <TouchableOpacity style={styles.routesContainer} onPress={handleOpenGoogleMapRoutes}>
-                        <Text style={styles.routesText}>Ver rotas no google maps</Text>
+                        <Text style={styles.routesText}>See route on google maps</Text>
                     </TouchableOpacity>
                 </View>
 
                 <View style={styles.separator} />
 
-                <Text style={styles.title}>Instruções para visita</Text>
-                <Text style={styles.description}>{orphanage.instructions}</Text>
+                <Text style={styles.title}>Instructions</Text>
+                <Text style={styles.description}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </Text>
 
                 <View style={styles.scheduleContainer}>
                         <View style={[styles.scheduleItem, styles.scheduleItemBlue]}>
                             <Feather name="clock" size={40} color="#2ab5d1" />
                             <Text style={[styles.scheduleText, styles.scheduleTextBlue]}>
-                                {orphanage.opening_hours}
+                                07:00am - 06:30pm
                             </Text>
                         </View>
 
                         { orphanage.open_on_weekends ? (
                             <View style={[styles.scheduleItem, styles.scheduleItemGreen]}>
                                 <Feather name="info" size={40} color="#39cc83" />
-                                <Text style={[styles.scheduleText, styles.scheduleTextGreen]}>Atendemos finais de semana</Text>
+                                <Text style={[styles.scheduleText, styles.scheduleTextGreen]}>Open on Weekends</Text>
                             </View>
                         ) : (
                             <View style={[styles.scheduleItem, styles.scheduleItemRed]}>
@@ -110,7 +110,7 @@ function OrphanageDetails() {
 
                 <RectButton style={styles.contactButton} onPress={ () => {}} >
                     <FontAwesome name="whatsapp" size={24} color="#fff" />
-                    <Text style={styles.contactButtonText}>Entrar em contato</Text>
+                    <Text style={styles.contactButtonText}>Contact</Text>
                 </RectButton>
                
             </View>

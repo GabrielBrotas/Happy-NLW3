@@ -67,13 +67,13 @@ export default function OnboardingScreens() {
             {
             backgroundColor: '#fff',
             image: <Image source={imageOne}  style={{width: 250, height: 250}} />,
-            title: 'Leve felicidade para o mundo',
-            subtitle: 'Visite o orfanatos e mude o dia de muitas crianças',
+            title: 'Bring happiness to the world',
+            subtitle: 'Visit orphanages and change many childrens day',
             },
             {
             backgroundColor: '#fff',
             image: <Image source={imageTwo} style={{width: 220, height: 330}} />,
-            title: 'Escolha um orfanato no mapa e faça uma visita',
+            title: 'Choose a orphanage on the map and pay a visit',
             subtitle: '',
             }
         ]}
