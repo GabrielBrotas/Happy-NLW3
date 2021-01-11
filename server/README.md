@@ -11,7 +11,7 @@
 
     Criar um script no package.json para rodar a aplicação
     "scripts": {
-        "dev": "ts-node-dev --transpile-only --ignore-watch node_modules
+        "dev": "ts-node-dev --transpile-only --ignore-watch node_modules --respawn src/server.ts"
     }
 
     --transpile-only: ignorar verificação de erro no codigo pois o edito já faz isso
@@ -46,7 +46,7 @@
     Por padrão o Typeorm roda com o javascript, então, precisamos falar para ele que vamos utilizar o typescript:
     no nosso package.json vamos criar um script para rodar o orm:
     
-    "typeorm": "ts-node-dev ./node/modules/typeorm/cli.js"
+    "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js"
 
     atraves do ts-node-dev ele vai buscar a cli.js dentro de onde o typeorm está instalado.
 
