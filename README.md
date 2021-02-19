@@ -10,7 +10,7 @@
   > React Native; <br />
   > TypeScript; <br />
   > Axios; <br />
-  > Styled-components <br />
+  > Styled-components; <br />
 
 ## Features
   - Load products from Fake API;
@@ -19,13 +19,13 @@
   - Save/load cart from async storage; 
 
 ## 💻 How to Run;
-  >#clone this folder; <br />
-  >#install the dependencies; <br />
-  > yarn <br />
-  >#Run fake api <br />
-  > yarn json-server server.json -p 3333 <br />
-  >#Run app in android
-  > yarn android
-  >#Run app in ios
-  > yarn ios
+  1. clone this folder; <br />
+  2. install the dependencies; <br />
+    > yarn <br />
+  3. Run fake api <br />
+    > yarn json-server server.json -p 3333 <br />
+  4. Run app in android
+    > yarn android
+  5. Run app in ios
+    > yarn ios
  
