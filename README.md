@@ -1,51 +1,31 @@
 # Happy-NLW3 Version 2.0
 
 ## 🚀 Project
-    
-
   Application developed to connect people and orphanages. <br /> 
-  The user can check the orhanage available in his region, check the visit instructions, photos of the place, contact and also create the orhanages, but just the admin can approve the creation.
   
-## Web View
-<img src="https://github.com/GabrielBrotas/Happy-NLW3/blob/main/images/happy-web.gif" width="800px" height="500px" />
-
-## Mobile View
+## View
 <img src="https://github.com/GabrielBrotas/Happy-NLW3/blob/main/images/happy-mobile.gif" width="800px" height="500px" />
 
 ## 💻 Technologies
-  > React; <br />
   > React Native; <br />
-  > Expo; <br />
   > TypeScript; <br />
-  > Node.js; <br />
-  > SQlite; <br />
+  > Axios; <br />
+  > Styled-components <br />
 
-# Folders
-  <a href="https://github.com/GabrielBrotas/Happy-NLW3/tree/main/web">Web</a> <br />
-  <a href="https://github.com/GabrielBrotas/Happy-NLW3/tree/main/mobile">Mobile</a> <br />
-  <a href="https://github.com/GabrielBrotas/Happy-NLW3/tree/main/server">Server</a> <br />
+## Features
+  - Load products from Fake API;
+  - Add itens to cart;
+  - Increment/Decrement units of a product in cart;
+  - Save/load cart from async storage; 
 
 ## 💻 How to Run;
-  #### Web
-  >#go to the web folder; <br />
-  > cd web <br />
+  >#clone this folder; <br />
   >#install the dependencies; <br />
-  > yarn install <br />
-  >#Run Application <br />
-  > yarn start <br />
-   
-  #### Mobile
-  >#go to the mobile folder; <br />
-  > cd mobile <br />
-  >#install the dependencies; <br />
-  > yarn install <br />
-  >#Run Application <br />
-  > yarn start <br />
-   
-  #### Server
-  >#go to the server folder; <br />
-  > cd server <br />
-  >#install the dependencies; <br />
-  > yarn install <br />
-  >#Run Application <br />
-  > yarn dev <br />
+  > yarn <br />
+  >#Run fake api <br />
+  > yarn json-server server.json -p 3333 <br />
+  >#Run app in android
+  > yarn android
+  >#Run app in ios
+  > yarn ios
+ 
